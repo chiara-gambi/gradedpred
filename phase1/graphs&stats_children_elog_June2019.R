@@ -81,7 +81,7 @@ al$DURPOSTDO2[is.na(al$DURPOSTDO2)==F&al$FixationStart<(al$TargetOnset+100)]<-al
 # this is for fixations that end after TotDur + 1000 ms
 al$DURPOSTDO2[is.na(al$DURPOSTDO2)==F&al$FixationEnd>(al$TotDur+1000)]<-al$DURPOSTDO2[is.na(al$DURPOSTDO2)==F&al$FixationEnd>(al$TotDur+1000)]-(al$FixationEnd[is.na(al$DURPOSTDO2)==F&al$FixationEnd>(al$TotDur+1000)]-(al$TotDur[is.na(al$DURPOSTDO2)==F&al$FixationEnd>(al$TotDur+1000)]+1000))
 
-# now discard fixations for which DURPOSTDO == NA
+# now discard fixations for which DURPOSTDO2 == NA
 alD2<-al[is.na(al$DURPOSTDO2)==F,]
 # this is to avoid NA
 
@@ -229,24 +229,6 @@ propABC_loess_pred_age<-ggplot(fixpropbinABC_l,aes(x=Time.ms,y=(FIXBIN), color=P
 print(propABC_loess_pred)
 ggsave("propABC.loess_prediction_children_age.png", plot=propABC_loess_pred_age, width=30, height=15, unit="cm", dpi=300, path=getwd())
 dev.off()
-
-#############################################################################
-#############################################################################
-# Sum fixation proportions across the entire prediction window (not the time bins)
-# Then model this using Elog and test for the difference between Pred vs. Mildly Pred 
-# and Unpred vs. Mildly Pred by participant using a lmer model (same as below but with no time variables)
-fixsumbin<-read.table("children_pred_bytrial-cleaned.txt",header=T)
-## remember to remove fixations to Background
-## This is the average proportion of fixations across the whole prediction window (per subject and trial)
-fixsumbinPWA<-summaryBy(AFIXBIN + BFIXBIN + CFIXBIN + BackgroundFIXBIN ~ Participant + Trial + ItemF+ Bias+Block+TargetOnset+Age+BPVS+AGEYEAR, data=fixsumbin, FUN = mean, keep.names=T, na.rm=T)
-summaryBy(AFIXBIN + BFIXBIN + CFIXBIN + BackgroundFIXBIN~Bias,data=fixsumbinPWA,FUN=mean, keep.names = T)
-# Bias   AFIXBIN   BFIXBIN   CFIXBIN BackgroundFIXBIN
-# 1  ABC 0.3485026 0.2926439 0.2266823       0.06129352
-# 2  CBA 0.2310175 0.2812192 0.3505603       0.06875840
-# 3 FLAT 0.2904534 0.3063760 0.2498660       0.06905234
-
-# You also need to extract raw differences (not transformed) to use in longitudinal analyses.
-# Do I need to restrict to a small time window to capture the graded effect?
 
 ##############################################################################
 ##############################################################################
@@ -825,8 +807,8 @@ names(gca)[8]<-"Elog"
 names(gca)[7]<-"Picture"
 gca$PictureP<-"UnPred"
 gca$PictureP[gca$Picture=="B"]<-"Mildly Pred"
-gca$PictureP[gca$Picture=="A"&gca$Contrast=="ABC-FLAT"]<-"Pred"
-gca$PictureP[gca$Picture=="C"&gca$Contrast=="CBA-FLAT"]<-"Pred"
+gca$PictureP[gca$Picture=="A"&gca$Contrast=="ABiasing-Neutral"]<-"Pred"
+gca$PictureP[gca$Picture=="C"&gca$Contrast=="CBiasing-Neutral"]<-"Pred"
 t<-poly(unique(gca$time),2)
 time<-as.vector(unique(gca$time))
 t<-cbind(t,time)
@@ -1165,6 +1147,7 @@ summary(UnPred.A)#-0.005127   0.005504  -0.931    0.353
 UnPred.V<-lm(Value~BPVS,data=diffbypart2)
 summary(UnPred.V)#BPVS        -0.0007408  0.0035331  -0.210    0.834
 
+
 ####################
 ## BY ITEMS ########
 ####################
@@ -1428,7 +1411,192 @@ confint(mdiffPredUnpred.I, method="Wald")
 # t2:Unpred   -0.74539765  0.05221361
 
 ##### need to do LogLik for the by-items analyses
-####################
+
+#############################################################################
+#############################################################################
+#### Alternative analyses of the prediction window
+##Option 1
+## Average elogs across the SHORT prediction window
+fixsumbin<-read.table("children_pred_bytrial-cleaned.txt",header=T)
+bySubj <- fixsumbin[fixsumbin$BackgroundFIXBIN==0,] %>%
+  group_by(Participant,Bias,time) %>% # aggregate within time slices
+  summarise(AFIXBIN.m = mean(AFIXBIN), BFIXBIN.m = mean(BFIXBIN), CFIXBIN.m = mean(CFIXBIN), yA = sum(AFIXBIN), yB = sum(BFIXBIN), yC = sum(CFIXBIN), N_A = length(AFIXBIN),N_B = length(BFIXBIN),N_C = length(CFIXBIN)) %>%
+  mutate(elogA = log( (yA + .5) / (N_A - yA + .5) ), 
+         elogB = log( (yB + .5) / (N_B - yB + .5) ),
+         elogC = log( (yC + .5) / (N_C - yC + .5) )) %>%  # empirical logit
+  #wts = 1/(y + .5) + 1/(N - y + .5), # optional weights
+  #Arcsin = asin(sqrt(PropAnimal))) # arcsin-sqrt
+  ungroup()        
+part.info<-summaryBy(time~Participant+AGEYEAR+Age+BPVS, data=fixsumbin,FUN=mean)
+part.info<-part.info[,-5]
+bySubj<-merge(bySubj,part.info,by=c("Participant"),sort=FALSE)
+bySubj_tow<-as.data.frame(bySubj[,c(1:3,13:18)])
+bySubj.w<-reshape(bySubj_tow,v.names=c("elogA","elogB","elogC"),timevar=c("Bias"),idvar=c("Participant","time","AGEYEAR","Age","BPVS"),direction="wide")
+## compute differences
+bySubj.w$A.CBA<-bySubj.w$elogA.CBA-bySubj.w$elogA.FLAT
+bySubj.w$B.CBA<-bySubj.w$elogB.CBA-bySubj.w$elogB.FLAT
+bySubj.w$C.CBA<-bySubj.w$elogC.CBA-bySubj.w$elogC.FLAT
+
+bySubj.w$A.ABC<-bySubj.w$elogA.ABC-bySubj.w$elogA.FLAT
+bySubj.w$B.ABC<-bySubj.w$elogB.ABC-bySubj.w$elogB.FLAT
+bySubj.w$C.ABC<-bySubj.w$elogC.ABC-bySubj.w$elogC.FLAT
+
+names(bySubj.w)
+diff<-bySubj.w[,c(1:5,15:20)]
+names(diff)[2]<-"Time.ms"
+##turn to long format
+diff<-reshape(diff,varying=names(diff)[6:11],direction="long")
+names(diff)[6]<-"Contrast"
+names(diff)[7:9]<-c("Picture.A","Picture.B","Picture.C")
+diff<-diff[,-10]
+diff<-reshape(diff,varying=names(diff)[7:9],direction="long")
+
+gca<-diff
+names(gca)[2]<-"time"
+names(gca)[8]<-"Elog"
+names(gca)[7]<-"Picture"
+gca$PictureP<-"UnPred"
+gca$PictureP[gca$Picture=="B"]<-"Mildly Pred"
+gca$PictureP[gca$Picture=="A"&gca$Contrast=="ABC"]<-"Pred"
+gca$PictureP[gca$Picture=="C"&gca$Contrast=="CBA"]<-"Pred"
+
+# restrict to short prediction window and average over time bins
+gca.300100<-gca[gca$time>=-300,]
+gca.300100.mean<-summaryBy(Elog~PictureP+Participant+AGEYEAR+Age+BPVS, data=gca.300100, FUn=mean, keep.names = T)
+
+gca.300100.mean$PictureP<-as.factor(gca.300100.mean$PictureP)
+gca.300100.mean$PictureP<-relevel(gca.300100.mean$PictureP,ref="Mildly Pred")
+gca.300100.mean$Pred<-ifelse(gca.300100.mean$PictureP=="Pred", 1,0)
+gca.300100.mean$Unpred<-ifelse(gca.300100.mean$PictureP=="UnPred", 1,0)
+gca.300100.mean$AC<-scale(gca.300100.mean$Age,T,F)
+gca.300100.mean$VC<-scale(gca.300100.mean$BPVS,T,F)
+
+#analyse together
+mdiffPredUnpred.short.mean<-lmer(Elog~1+(Pred+Unpred)+(1|Participant),data=gca.300100.mean,REML=F)
+summary(mdiffPredUnpred.short.mean) #singular fit
+mdiffPredUnpred.short.mean.AV<-lmer(Elog~1+(Pred+Unpred)*(AC+VC)+(1|Participant),data=gca.300100.mean,REML=F)
+summary(mdiffPredUnpred.short.mean.AV) # singular fit
+
+## Option 2 would involve computing elog over the time bins (rather than the items) first and then instead of averaging across items
+## include items as a random effect (instead of time)
+## This means more data points for the model, but does it make sense
+## The purpose of avearging is to get more robust estimates, but here we are doing that over just 5 time points (vs. 15 items)
+
+## Option 3
+## Model probablity of fixation in the last time bin (+100) using a glmer and without averaging by items or subjects
+## This does not allow computation of difference curves however.
+
+# Conclusion: stick to current analyses but show that correlations with age are similar from raw data (and run longitudinal analyses with raw data)
+
+# Additional indeces for longitudinal analyses
+# 1. Average Elog value over the short prediction window
+elog.ind<-gca.300100.mean[,c("PictureP","Participant","Elog")]
+elog.ind.w<-reshape(elog.ind,v.names="Elog",idvar="Participant",timevar="PictureP",direction="wide")
+elog.ind.w$elogPred<-elog.ind.w$Elog.Pred-elog.ind.w$`Elog.Mildly Pred`
+elog.ind.w$elogUnpred<-elog.ind.w$Elog.UnPred-elog.ind.w$`Elog.Mildly Pred`
+# write to file
+write.table(elog.ind.w[,c("Participant","elogPred","elogUnpred")],"elogshort_predindeces.txt",row.names = F)
+
+#2. Average predicted value from the mdiffPredUnpred.AV model (last 400 ms of the prediction window)
+t<-poly(unique(gca$time),2)
+time<-as.vector(unique(gca$time))
+t<-cbind(t,time)
+t<-as.data.frame(t)
+gca<-gca[order(gca$time),]
+gca$t1<-NA
+gca$t2<-NA
+for (i in (1:nrow(gca))){
+  gca$t1[i]<-t[t$time==gca$time[i],1] 
+  gca$t2[i]<-t[t$time==gca$time[i],2] 
+}
+gca$PictureP<-as.factor(gca$PictureP)
+gca$PictureP<-relevel(gca$PictureP,ref="Mildly Pred")
+gca$Pred<-ifelse(gca$PictureP=="Pred", 1,0)
+gca$Unpred<-ifelse(gca$PictureP=="UnPred", 1,0)
+gca$AC<-scale(gca$Age,T,F)
+gca$VC<-scale(gca$BPVS,T,F)
+gca.300100<-subset(gca, time>=-300)
+predicted_300100<-predict(mdiffPredUnpred.AV,newdata=gca.300100)
+gca.300100$predicted<-predicted_300100
+# for each participant, compute the size of Pred minus Mid-Pred and Unpred minus Mid-Pred and correlate with Age
+# average across the whole time window first
+pred_mean<-summaryBy(predicted~Participant+Age+BPVS+PictureP,FUN=mean, data=gca.300100,keep.names = T)
+# turn to wide format
+pred_mean.w<-reshape(pred_mean,v.names=c("predicted"),idvar=c("Participant","Age","BPVS"),timevar = c("PictureP"),direction="wide")
+# compute differences
+pred_mean.w$Pred<-pred_mean.w$predicted.Pred-pred_mean.w$`predicted.Mildly Pred`
+pred_mean.w$UnPred<-pred_mean.w$predicted.UnPred-pred_mean.w$`predicted.Mildly Pred`
+pred_mean.w$Graded<-pred_mean.w$Pred-pred_mean.w$UnPred
+
+summary(lm(Pred~Age,data=pred_mean.w))
+summary(lm(UnPred~Age,data=pred_mean.w))
+summary(lm((Pred-UnPred)~Age,data=pred_mean.w))
+
+library(ggplot2)
+library(GGally)
+my_fn <- function(data, mapping, ...){
+  p <- ggplot(data = data, mapping = mapping) + 
+    geom_point() + 
+    #geom_smooth(method=loess, fill="red", color="red", ...) +
+    geom_smooth(method=lm, fill="blue", color="blue", ...)
+  p
+}
+ggpairs(pred_mean.w,columns=c("Graded","Pred","UnPred","Age","BPVS"), lower = list(continuous = my_fn))
+
+#plot
+# actual elog transformed data
+names(diff)[8]<-"PropLooks"
+names(diff)[7]<-"Picture"
+diff$Contrast<-as.factor(diff$Contrast)
+levels(diff$Contrast)<-c("ABiasing-Neutral","CBiasing-Neutral")
+
+elog_diff_loess_pred_ageG<-ggplot(subset(diff,Time.ms>=-300),aes(x=Time.ms,y=PropLooks,color=Picture,linetype=Picture))+stat_summary(fun.y="mean", geom="point")+stat_smooth(method="loess")+facet_wrap(~Contrast+AGEYEAR)+ggtitle("Prediction window")+ylab("Empirical logit Difference")
+print(elog_diff_loess_pred_ageG)
+
+#predicted values
+elog_diff_loess_pred_ageG<-ggplot(gca.300100,aes(x=time,y=predicted,color=Picture,linetype=Picture))+stat_summary(fun.y="mean", geom="point")+stat_smooth(method="loess")+facet_wrap(~Contrast+AGEYEAR)+ggtitle("Prediction window")+ylab("Empirical logit Difference")
+print(elog_diff_loess_pred_ageG)
+
+# save to file
+write.table(pred_mean.w[,c("Participant","Pred","UnPred")],"predshort_predindeces.txt",row.names = F)
+
+#3. average raw fixation proportions across the SHORT prediction window (-300ms to +100ms = 400ms duration)
+fixsumbin<-read.table("children_pred_bytrial-cleaned.txt",header=T)
+## remember to remove fixations to Background prior to carryng out analyses and producing any graphs
+spw<-subset(fixsumbin,BackgroundFIXBIN==0)
+spw<-subset(spw,time>=-300)
+spwa<-summaryBy(AFIXBIN + BFIXBIN + CFIXBIN ~ Participant + Trial + ItemF+ Bias+Block+TargetOnset+Age+BPVS+AGEYEAR, data=spw, FUN = mean, keep.names=T, na.rm=T)
+spwa.subj<-summaryBy(AFIXBIN + BFIXBIN + CFIXBIN~Bias+Participant,data=spwa,FUN=mean, keep.names = T)
+spwa.subj.w<-reshape(spwa.subj,v.names=c("AFIXBIN","BFIXBIN","CFIXBIN"),timevar=c("Bias"),idvar=c("Participant"),direction="wide")
+## compute differences
+spwa.subj.w$A.CBA<-spwa.subj.w$AFIXBIN.CBA-spwa.subj.w$AFIXBIN.FLAT
+spwa.subj.w$B.CBA<-spwa.subj.w$BFIXBIN.CBA-spwa.subj.w$BFIXBIN.FLAT
+spwa.subj.w$C.CBA<-spwa.subj.w$CFIXBIN.CBA-spwa.subj.w$CFIXBIN.FLAT
+
+spwa.subj.w$A.ABC<-spwa.subj.w$AFIXBIN.ABC-spwa.subj.w$AFIXBIN.FLAT
+spwa.subj.w$B.ABC<-spwa.subj.w$BFIXBIN.ABC-spwa.subj.w$BFIXBIN.FLAT
+spwa.subj.w$C.ABC<-spwa.subj.w$CFIXBIN.ABC-spwa.subj.w$CFIXBIN.FLAT
+
+##turn to long format
+raw.diff<-reshape(spwa.subj.w,varying=names(spwa.subj.w)[11:16],direction="long")
+raw.diff<-raw.diff[,c(1,11:14)]
+names(raw.diff)[2:5]<-c("Contrast","Picture.A","Picture.B","Picture.C")
+raw.diff<-reshape(raw.diff,varying=names(raw.diff)[3:5],direction="long")
+names(raw.diff)[3]<-"Picture"
+names(raw.diff)[4]<-"Prop"
+raw.diff$PictureP<-"MildPred"
+raw.diff$PictureP[raw.diff$Picture=="A"&raw.diff$Contrast=="ABC"]<-"Pred"
+raw.diff$PictureP[raw.diff$Picture=="C"&raw.diff$Contrast=="CBA"]<-"Pred"
+raw.diff$PictureP[raw.diff$Picture=="A"&raw.diff$Contrast=="CBA"]<-"UnPred"
+raw.diff$PictureP[raw.diff$Picture=="C"&raw.diff$Contrast=="ABC"]<-"UnPred"
+raw.diff<-summaryBy(Prop~PictureP+Participant,data=raw.diff,FUN=mean,keep.names=T)
+raw.diff.w<-reshape(raw.diff,v.names=c("Prop"),idvar="Participant",timevar="PictureP",direction="wide")
+raw.diff.w$rawPred<-raw.diff.w$Prop.Pred-raw.diff.w$Prop.MildPred
+raw.diff.w$rawUnpred<-raw.diff.w$Prop.UnPred-raw.diff.w$Prop.MildPred
+
+#save to file
+write.table(raw.diff.w[,c("Participant","rawPred","rawUnpred")],"rawshort_predindeces.txt",row.names = F)
+
 #### Recognition or Integration Graph
 ####################
 alr<-al
@@ -2326,3 +2494,197 @@ write.table(quadbypart2, "recognition_benefit_indeces.txt",sep=";",dec=".",row.n
 # print(bySubj_rec_benefit_effects_age)
 # bySubj_rec_benefit_effects_voc<-ggplot(subset(quadbypart2,Age<=42),aes(x=BPVS,y=Value))+geom_point(position="jitter")+stat_smooth(method="lm")+ggtitle("Correlation between age and recognition benefit (quadratic)")+xlab("Age in months")+ylab("recognition benefit (quadratic) for A/C pictures")
 # print(bySubj_rec_benefit_effects_voc)
+
+###################################################################
+##### Time to first  fix - Fernald-style recognition window analysis
+###################################################################
+
+############################
+##### Recognition speed ####
+############################
+# dataset for recognition speed: alr
+# In this dataset, each row is a fixation
+# Fixations that are not relevant to the recognition window (DURPOSTDO2==NA) must be discarded
+alr.D<-alr[is.na(alr$DURPOSTDO2)==F,]
+# We have already defined variables that code whether a given AOI was fixated at NounOnset+100 (DISCARDBONSET, etc.)
+# We also have a variable that codes which AOI the fixation was to (FixLoc)
+
+#This selects the first Fix for each trial and each FixLoc, and codes all the useful information with it
+tff.rs<-summaryBy(FixationStart ~ FixLoc+Participant + Trial + ItemF+ Named+Bias+Block+TargetOnset+TotDur+Age+BPVS+AGEYEAR, data=alr.D, FUN = min, keep.names=T, na.rm=T)
+
+#Separately, we need to get Trial-specific information
+trial.info<-summaryBy(DURPOSTDO2+DISCARDBONSET+DISCARDAONSET+DISCARDCONSET~Participant + Trial,data=alr.D, FUN = sum, keep.names=T, na.rm=T )
+
+#merge the two files
+tff.rs.m<-merge(tff.rs,trial.info,by=c("Participant","Trial"))
+
+#now we need to apply the rejection criterion
+## apply %40 rejection criterion
+tff.rs.m$Perc_Dur<-tff.rs.m$DURPOSTDO2*100/(tff.rs.m$TotDur+1000-(tff.rs.m$TargetOnset+100))
+tff.rs.m$DiscardTrial<-0
+tff.rs.m$DiscardTrial[tff.rs.m$Perc_Dur<40]<-1
+tff.rs.m$DiscardTrial[tff.rs.m$DiscardTrial>1]<-1
+tff.rs.m<-tff.rs.m[tff.rs.m$DiscardTrial==0,]
+
+#and discard fixations to the background (FixLoc == Background)
+tff.rs.m<-tff.rs.m[tff.rs.m$FixLoc!="Background",]
+
+#select only neutral trials
+tff.rs.m.FLAT<-tff.rs.m[tff.rs.m$Bias=="FLAT",]
+
+#and trials with looks to the Target at Onset+100
+tff.rs.m.FLATB<-tff.rs.m.FLAT[tff.rs.m.FLAT$DISCARDBONSET==0&tff.rs.m.FLAT$Named=="B"&tff.rs.m.FLAT$FixLoc=="B",]
+tff.rs.m.FLATA<-tff.rs.m.FLAT[tff.rs.m.FLAT$DISCARDAONSET==0&tff.rs.m.FLAT$Named=="A"&tff.rs.m.FLAT$FixLoc=="A",]
+tff.rs.m.FLATC<-tff.rs.m.FLAT[tff.rs.m.FLAT$DISCARDCONSET==0&tff.rs.m.FLAT$Named=="C"&tff.rs.m.FLAT$FixLoc=="C",]
+
+tff.rs.m.FLATABC<-rbind(tff.rs.m.FLATB,tff.rs.m.FLATA, tff.rs.m.FLATC)#1261 data points
+
+# exclude cases in which target was not fixated before the end of the Recognition window (TotDurt+1000)
+
+tff.rs.m.FLATABC<-tff.rs.m.FLATABC[tff.rs.m.FLATABC$FixationStart<tff.rs.m.FLATABC$TotDur+1000,] # no such cases
+
+# get Fixation Onset relative to Target Noun Onset
+
+tff.rs.m.FLATABC$FixStartRel<-tff.rs.m.FLATABC$FixationStart-tff.rs.m.FLATABC$TargetOnset
+summary(tff.rs.m.FLATABC$FixStartRel)
+
+# now get by-participant averages, these will be the recognition speed index raw
+
+tff.rs.m.FLATABC.bysubj<-summaryBy(FixStartRel~Participant+Age+BPVS,data=tff.rs.m.FLATABC,FUN=mean,keep.names = T)
+write.table(tff.rs.m.FLATABC.bysubj,"raw_tff_recspeedindeces.txt",row.names = F)
+
+# then fit a model with intercept and by-participant random effects - the fixed effect + participant random effect if the recognition speed index from the model
+
+tff.lmer<-lmer(FixStartRel~1+(1|Participant)+(1|ItemF),data=tff.rs.m.FLATABC,REML=F)
+summary(tff.lmer)
+
+TTFmodel<-as.vector(fixef(tff.lmer)+ranef(tff.lmer)$Participant)
+tff.lmer.bysubj<-data.frame(Participant=row.names(ranef(tff.lmer)$Participant),TimeToFirstFixModel=TTFmodel)
+names(tff.lmer.bysubj)[2]<-"TimeToFirstFixModel"
+write.table(tff.lmer.bysubj,"model_tff_recspeedindeces.txt",row.names = F)
+
+# NOTE- this is what Weisleder and Fernald (2013, Psych Science) did
+# Speech-processing efficiency was calculated as the proportion of time the infant spent 
+# fixating the target picture out of total time spent looking at either the target or the 
+# distracter picture, within 300 to 1,800 ms of target-word onset (Fernald et al., 2008). 
+# Only those trials on which the child was looking at either the target or the distracter 
+# picture at the onset of the target noun were included in these analyses. 
+# This measure of efficiency captured children’s tendency to shift rapidly toward the 
+# target picture after initially looking at the distracter, as well as their tendency to 
+# maintain attention to the target when they were already looking at it.
+
+# Instead - this is what Marchman & Fernald (2008, Dev Sci.) did
+# Reaction  time  (RT)  was
+# the mean latency to shift from the distracter to the target
+# picture  on  distracter-initial  trials,  based  on  all  shifts
+# initiated  within  300 –1800  ms  from  target-word  onset.
+
+# Fernald, Perfors, Marchman (2006, Dev. Psych)
+# Proportion of correct shifts to target picture—This measure of correct shifts
+# represents the number of first shifts to the target picture that occurred on distracter-initial
+# trials within the 300–1,800 ms window following target word onset, as a proportion of all
+# distracter-initial trials.
+# Proportion of incorrect shifts to distracter picture—This measure of incorrect shifts
+# represents the number of first shifts to the distracter picture that occurred on target-initial
+# trials within the 300–1,800-ms window following target word onset, as a proportion of all
+# target-initial trials.
+# Proportion of looking time to target picture—Combining the data from both target and
+# distracter-initial trials, this measure of accuracy represents the total amount of time the
+# infant spent fixating the target picture as a percentage of total time fixating either picture
+# during the 300–1,800-ms window from target word onset.
+# RT—Speed of response to the spoken word was calculated as the mean latency (in
+# milliseconds) to shift from the distracter to the target picture on all distracter-initial trials 
+# on which a correct shift occurred within the 300–1,800-ms window from target word onset.
+
+# Fernald & Marchman (2012, Child Dev) did both:
+# Accuracy was the mean proportion of looking to the named picture on target- and distracter-initial trials averaged
+# over the time window 300–1800 ms from noun onset.
+# Mean reaction time (RT) to shift to the correct
+# referent was calculated for each child based on
+# distracter-initial trials on which the child started on
+# the distracter picture and shifted to the target picture within 300–1,800 ms from target word onset.
+# Those trials on which the child shifted within the
+# first 300 ms or later than 1,800 ms from target onset
+# were excluded, as such shifts are less likely to be in
+# response to the stimulus sentence 
+
+############################
+##### Recognition cost ####
+############################
+# dataset for recognition speed: alr
+# In this dataset, each row is a fixation
+# Fixations that are not relevant to the recognition window (DURPOSTDO2==NA) must be discarded
+alr.D<-alr[is.na(alr$DURPOSTDO2)==F,]
+# We have already defined variables that code whether a given AOI was fixated at NounOnset+100 (DISCARDBONSET, etc.)
+# We also have a variable that codes which AOI the fixation was to (FixLoc)
+
+#This selects the first Fix for each trial and each FixLoc, and codes all the useful information with it
+tff.rs<-summaryBy(FixationStart ~ FixLoc+Participant + Trial + ItemF+ Named+Bias+Block+TargetOnset+TotDur+Age+BPVS+AGEYEAR, data=alr.D, FUN = min, keep.names=T, na.rm=T)
+
+#Separately, we need to get Trial-specific information
+trial.info<-summaryBy(DURPOSTDO2+DISCARDBONSET+DISCARDAONSET+DISCARDCONSET~Participant + Trial,data=alr.D, FUN = sum, keep.names=T, na.rm=T )
+
+#merge the two files
+tff.rs.m<-merge(tff.rs,trial.info,by=c("Participant","Trial"))
+
+#now we need to apply the rejection criterion
+## apply %40 rejection criterion
+tff.rs.m$Perc_Dur<-tff.rs.m$DURPOSTDO2*100/(tff.rs.m$TotDur+1000-(tff.rs.m$TargetOnset+100))
+tff.rs.m$DiscardTrial<-0
+tff.rs.m$DiscardTrial[tff.rs.m$Perc_Dur<40]<-1
+tff.rs.m$DiscardTrial[tff.rs.m$DiscardTrial>1]<-1
+tff.rs.m<-tff.rs.m[tff.rs.m$DiscardTrial==0,]
+
+#and discard fixations to the background (FixLoc == Background)
+tff.rs.m<-tff.rs.m[tff.rs.m$FixLoc!="Background",]
+
+#select only trial in which B was the named picture AND were in Block 1
+tff.rs.m.B<-tff.rs.m[tff.rs.m$Named=="B"&tff.rs.m$Block=="First",]
+
+#discard trials with looks to the Target at Onset+100
+tff.rs.m.B<-tff.rs.m.B[tff.rs.m.B$DISCARDBONSET==0,]
+
+# select only fixations to B
+tff.rs.m.B<-tff.rs.m.B[tff.rs.m.B$FixLoc=="B",]#1227
+
+# exclude cases in which target was not fixated before the end of the Recognition window (TotDurt+1000)
+tff.rs.m.B<-tff.rs.m.B[tff.rs.m.B$FixationStart<tff.rs.m.B$TotDur+1000,] # no such cases
+
+# get Fixation Onset relative to Target Noun Onset
+tff.rs.m.B$FixStartRel<-tff.rs.m.B$FixationStart-tff.rs.m.B$TargetOnset
+summary(tff.rs.m.B$FixStartRel)
+
+# get some means
+summary(tff.rs.m.B)
+tff.rs.m.B$Context<-"Biasing"
+tff.rs.m.B$Context[tff.rs.m.B$Bias=="FLAT"]<-"Neutral"
+summaryBy(FixStartRel~Context,data=tff.rs.m.B,FUN=mean)
+# Context FixStartRel.mean
+# 1 Biasing         844.4394
+# 2 Neutral         752.9706
+
+#model
+tff.rs.m.B$PC<-ifelse(tff.rs.m.B$Context=="Neutral",.5,-.5)
+tff.rs.m.B$PCC<-scale(tff.rs.m.B$PC,T,F)
+ttf.lmer.reccost<-lmer(FixStartRel~1+PCC+(1+PCC||Participant)+(1+PCC||ItemF),data= tff.rs.m.B,REML=F)
+summary(ttf.lmer.reccost)
+# Fixed effects:
+#   Estimate Std. Error t value
+# (Intercept)   794.42      17.72  44.829
+# PCC           -90.63      27.64  -3.279
+# with age and vocabulary
+tff.rs.m.B$AC<-scale(tff.rs.m.B$Age,T,F)
+tff.rs.m.B$VC<-scale(tff.rs.m.B$BPVS,T,F)
+ttf.lmer.reccost.AV.sf<-lmer(FixStartRel~1+PCC*(AC+VC)+(1+PCC||Participant)+(1+PCC||ItemF),data= tff.rs.m.B,REML=F)
+# singular fit
+# the participant random slope is estimated to be zero, so remove
+ttf.lmer.reccost.AV<-lmer(FixStartRel~1+PCC*(AC+VC)+(1|Participant)+(1+PCC||ItemF),data= tff.rs.m.B,REML=F)
+summary(ttf.lmer.reccost.AV)
+# Fixed effects:
+#   Estimate Std. Error t value
+# (Intercept)  793.771     17.579  45.155
+# PCC          -90.992     27.026  -3.367
+# AC            -1.069      1.682  -0.636
+# VC            -1.407      1.085  -1.297
+# PCC:AC        -2.689      3.285  -0.819
+# PCC:VC        -2.682      2.118  -1.266

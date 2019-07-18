@@ -226,9 +226,22 @@ dev.off()
 # Around smooth (loess) add bootstrap CIs and suppress the default shading from the smooth is possible
 # Else just use mean for dots and the CIs.
 propABC_loess_pred_age<-ggplot(fixpropbinABC_l,aes(x=Time.ms,y=(FIXBIN), color=Picture,linetype=Picture))+stat_summary(fun.y="mean", geom="point")+stat_smooth(method="loess")+facet_wrap(~Context+AGEYEAR)+ggtitle("Prediction window")+ylab("Fixation proportions")+geom_vline(xintercept=0,linetype="solid")
-print(propABC_loess_pred)
+print(propABC_loess_pred_age)
 ggsave("propABC.loess_prediction_children_age.png", plot=propABC_loess_pred_age, width=30, height=15, unit="cm", dpi=300, path=getwd())
 dev.off()
+library(cowplot)
+fixpropbinABC_l.CI<-summaryBy(FIXBIN~Time.ms+Picture+Context+AGEYEAR,data=fixpropbinABC_l,FUN=c(mean, ci.high,ci.low))
+fixpropbinABC_l.CI$AGEYEAR<-factor(fixpropbinABC_l.CI$AGEYEAR, levels=c("Two","Three","Four-Five"))
+propABC_loess_pred_age2<-ggplot(fixpropbinABC_l.CI,aes(x=Time.ms,y=(FIXBIN.mean), color=Picture,linetype=Picture))+geom_line(stat = "identity", size = 1) + geom_linerange(aes(ymin= (FIXBIN.mean - FIXBIN.ci.low), ymax= (FIXBIN.mean + FIXBIN.ci.high)), position = position_dodge(width=.9), size =0.5)+facet_grid(AGEYEAR~Context)+ylab("Fixation proportions")+theme(legend.position = "bottom")+ylim(.15,.55)+theme(axis.text.x = element_text(size=10))
+print(propABC_loess_pred_age2)
+
+fixpropbinABC_l$Voc2<-"1st quartile"
+fixpropbinABC_l$Voc2[fixpropbinABC_l$BPVS>30]<-"Interquartile"
+fixpropbinABC_l$Voc2[fixpropbinABC_l$BPVS>54]<-"3rd quartile"
+fixpropbinABC_l$Voc2<-factor(fixpropbinABC_l$Voc2, levels=c("1st quartile","Interquartile","3rd quartile"))
+fixpropbinABC_l.CI2<-summaryBy(FIXBIN~Time.ms+Picture+Context+Voc2,data=fixpropbinABC_l,FUN=c(mean, ci.high,ci.low))
+propABC_loess_pred_voc2<-ggplot(fixpropbinABC_l.CI2,aes(x=Time.ms,y=(FIXBIN.mean), color=Picture,linetype=Picture))+geom_line(stat = "identity", size = 1) + geom_linerange(aes(ymin= (FIXBIN.mean - FIXBIN.ci.low), ymax= (FIXBIN.mean + FIXBIN.ci.high)), position = position_dodge(width=.9), size =0.5)+facet_grid(Voc2~Context)+ylab("Fixation proportions")+theme(legend.position = "bottom")+ylim(.15,.55)+theme(axis.text.x = element_text(size=10))
+print(propABC_loess_pred_voc2)
 
 ##############################################################################
 ##############################################################################
@@ -319,6 +332,27 @@ levels(diff.meanCI$Contrast)<-c("ABC-FLAT","CBA-FLAT")
 
 elog_diff_CI_pred<-ggplot(diff.meanCI,aes(x=Time.ms,y=PropLooks,color=Picture,linetype=Picture))+geom_line(stat = "identity", size = 1) + geom_linerange(aes(ymin= (PropLooks - Picture.ci.low), ymax= (PropLooks + Picture.ci.high)), position = position_dodge(width=.9), size =0.5)+facet_wrap(~Contrast)+ggtitle("Prediction window")+ylab("Empirical logit Difference")
 ggsave("elog_growthcurve.CI_prediction_children.png", plot=elog_diff_CI_pred, width=30, height=15, unit="cm", dpi=300, path="/Volumes/Macintosh HD/ED_20142017/ExpectationDrivenLanguageLearning/ExpectationLearning/Experiment4_gradedpredictions/mainexp/FINAL/children_2018an")
+dev.off()
+
+#collapsing across A and C
+diff$PictureP<-"Unpredictable"
+diff$PictureP[diff$time=="B"]<-"Mildly-predictable"
+diff$PictureP[diff$time=="A"&diff$Contrast=="ABC"]<-"Predictable"
+diff$PictureP[diff$time=="C"&diff$Contrast=="CBA"]<-"Predictable"
+diff.meanCI.comb<-summaryBy(Picture~Time.ms+PictureP,data=diff, FUN=c(mean,ci.low,ci.high),keep.names=F,na.rm=T)
+names(diff.meanCI.comb)[2]<-"Picture"
+elog_diff_CI_pred_comb<-ggplot(diff.meanCI.comb,aes(x=Time.ms,y=Picture.mean,linetype=Picture))+geom_line(stat = "identity", size = 1) + geom_linerange(aes(ymin= (Picture.mean - Picture.ci.low), ymax= (Picture.mean + Picture.ci.high)), position = position_dodge(width=.9), size =0.5)+ylab("Empirical logit Difference")+theme(legend.position = "bottom")
+
+  
+print(elog_diff_CI_pred_comb)
+
+#merge raw prop by age, raw prop by voc and elog diff curves (average) in one plot
+library(cowplot)
+library(ggpubr)
+raw_comb<-ggarrange(propABC_loess_pred_age2,propABC_loess_pred_voc2,labels=c("A", "B"),common.legend = T, legend="bottom")
+all_comb<-ggarrange(raw_comb,elog_diff_CI_pred_comb,ncol=2,widths = c(2,1),labels=c("","C"))
+print(all_comb)
+ggsave("growthcurve.CI_pred_children_elog_raw.png", plot=all_comb, width=45, height=15, unit="cm", dpi=300, path=getwd())
 dev.off()
 
 # with points + loess function
@@ -807,8 +841,8 @@ names(gca)[8]<-"Elog"
 names(gca)[7]<-"Picture"
 gca$PictureP<-"UnPred"
 gca$PictureP[gca$Picture=="B"]<-"Mildly Pred"
-gca$PictureP[gca$Picture=="A"&gca$Contrast=="ABiasing-Neutral"]<-"Pred"
-gca$PictureP[gca$Picture=="C"&gca$Contrast=="CBiasing-Neutral"]<-"Pred"
+gca$PictureP[gca$Picture=="A"&gca$Contrast=="ABC"]<-"Pred"
+gca$PictureP[gca$Picture=="C"&gca$Contrast=="CBA"]<-"Pred"
 t<-poly(unique(gca$time),2)
 time<-as.vector(unique(gca$time))
 t<-cbind(t,time)
@@ -829,7 +863,7 @@ gca$AC<-scale(gca$Age,T,F)
 gca$VC<-scale(gca$BPVS,T,F)
 
 #analyse together
-mdiffPredUnpred<-lmer(Elog~1+(t1+t2)*(Pred+Unpred)+(1+t1+t2|Participant)+(1+t1+t2|Participant:Pred)+(1+t1+t2|Participant:Unpred),data=gca,REML=F)
+mdiffPredUnpred<-lmer(Elog~1+(t1+t2)*(Pred+Unpred)+(1+t1+t2|Participant)+(1+t1+t2|Participant:Pred)+(1+t1+t2|Participant:Unpred),data=gca,REML=F,control=lmerControl(check.conv.singular = .makeCC(action = "ignore",  tol = 1e-4)))
 summary(mdiffPredUnpred)
 # Linear mixed model fit by maximum likelihood  ['lmerMod']
 # Formula: Elog ~ 1 + (t1 + t2) * (Pred + Unpred) + (1 + t1 + t2 | Participant) +  
@@ -890,7 +924,7 @@ confint(mdiffPredUnpred, method="Wald")
 # t2:Pred     -0.41942007 -0.0037944239
 # t2:Unpred   -0.54598757 -0.1315165997
 
-mdiffPredUnpred.AV<-lmer(Elog~1+(t1+t2)*(Pred+Unpred)*(AC+VC)+(1+t1+t2|Participant)+(1+t1+t2|Participant:Pred)+(1+t1+t2|Participant:Unpred),data=gca,REML=F)
+mdiffPredUnpred.AV<-lmer(Elog~1+(t1+t2)*(Pred+Unpred)*(AC+VC)+(1+t1+t2|Participant)+(1+t1+t2|Participant:Pred)+(1+t1+t2|Participant:Unpred),data=gca,REML=F,control=lmerControl(check.conv.singular = .makeCC(action = "ignore",  tol = 1e-4)))
 summary(mdiffPredUnpred.AV)
 # Linear mixed model fit by maximum likelihood  ['lmerMod']
 # Formula: Elog ~ 1 + (t1 + t2) * (Pred + Unpred) * (AC + VC) + (1 + t1 +  
@@ -998,6 +1032,59 @@ confint(mdiffPredUnpred.AV, method="Wald")
 # anova(mdiffPredUnpred.nol2,mdiffPredUnpred)#3.5734      1    0.05871 .
 # anova(mdiffPredUnpred.noq2,mdiffPredUnpred)#0.3735      1     0.5411
 
+# separately age and voc
+mdiffPredUnpred.A<-lmer(Elog~1+(t1+t2)*(Pred+Unpred)*(AC)+(1+t1+t2|Participant)+(1+t1+t2|Participant:Pred)+(1+t1+t2|Participant:Unpred),data=gca,REML=F,control=lmerControl(check.conv.singular = .makeCC(action = "ignore",  tol = 1e-4)))
+summary(mdiffPredUnpred.A)
+# Fixed effects:
+#   Estimate Std. Error t value
+# (Intercept)  -1.004e-01  5.085e-02  -1.975
+# t1           -2.803e-02  1.894e-01  -0.148
+# t2            1.495e-01  9.676e-02   1.545
+# Pred          4.543e-01  5.168e-02   8.790
+# Unpred       -1.053e-01  5.161e-02  -2.041
+# AC           -4.974e-03  4.924e-03  -1.010
+# t1:Pred       3.243e-01  1.918e-01   1.691
+# t1:Unpred    -5.841e-01  1.965e-01  -2.972
+# t2:Pred      -2.116e-01  1.061e-01  -1.995
+# t2:Unpred    -3.388e-01  1.058e-01  -3.202
+# t1:AC        -5.178e-03  1.833e-02  -0.282
+# t2:AC         9.630e-04  9.368e-03   0.103
+# Pred:AC       1.982e-02  5.003e-03   3.962
+# Unpred:AC    -4.793e-03  4.997e-03  -0.959
+# t1:Pred:AC    1.160e-02  1.857e-02   0.625
+# t1:Unpred:AC -8.711e-03  1.903e-02  -0.458
+# t2:Pred:AC    5.499e-05  1.027e-02   0.005
+# t2:Unpred:AC  1.669e-03  1.024e-02   0.163
+
+mdiffPredUnpred.V<-lmer(Elog~1+(t1+t2)*(Pred+Unpred)*(VC)+(1+t1+t2|Participant)+(1+t1+t2|Participant:Pred)+(1+t1+t2|Participant:Unpred),data=gca,REML=F,control=lmerControl(check.conv.singular = .makeCC(action = "ignore",  tol = 1e-4)))
+summary(mdiffPredUnpred.V)
+# Fixed effects:
+#   Estimate Std. Error t value
+# (Intercept)  -0.1004469  0.0508576  -1.975
+# t1           -0.0280331  0.1890700  -0.148
+# t2            0.1495446  0.0962933   1.553
+# Pred          0.4542529  0.0516242   8.799
+# Unpred       -0.1053068  0.0516678  -2.038
+# VC           -0.0037730  0.0031544  -1.196
+# t1:Pred       0.3243496  0.1913748   1.695
+# t1:Unpred    -0.5840950  0.1964388  -2.973
+# t2:Pred      -0.2116072  0.1057341  -2.001
+# t2:Unpred    -0.3387521  0.1052745  -3.218
+# t1:VC        -0.0104670  0.0117269  -0.893
+# t2:VC         0.0058771  0.0059725   0.984
+# Pred:VC       0.0129251  0.0032019   4.037
+# Unpred:VC    -0.0004951  0.0032046  -0.154
+# t1:Pred:VC    0.0173686  0.0118698   1.463
+# t1:Unpred:VC  0.0077818  0.0121839   0.639
+# t2:Pred:VC   -0.0074931  0.0065581  -1.143
+# t2:Unpred:VC -0.0105068  0.0065295  -1.609
+
+#only Unpred
+mdiffUnpred.A<-lmer(Elog~1+(t1+t2)*(Unpred)*(AC)+(1+t1+t2|Participant)+(1+t1+t2|Participant:Unpred),data=gca,REML=F,control=lmerControl(check.conv.singular = .makeCC(action = "ignore",  tol = 1e-4)))
+summary(mdiffUnpred.A)
+
+mdiffUnpred.V<-lmer(Elog~1+(t1+t2)*(Unpred)*(VC)+(1+t1+t2|Participant)+(1+t1+t2|Participant:Unpred),data=gca,REML=F,control=lmerControl(check.conv.singular = .makeCC(action = "ignore",  tol = 1e-4)))
+summary(mdiffUnpred.V)
 
 ###plot by participant effects (intercept)
 diffbypart<-data.frame(Contrast=rep(c("Pred"),each=215),PartCode=rep(1:215,1),Value=NA)
@@ -1885,6 +1972,35 @@ print(rec_cost_loess_comb)
 ggsave("prop_growthcurve.loess_recognition_B_comb_children.png", plot=rec_cost_loess_comb, width=30, height=15, unit="cm", dpi=300, path=getwd())
 dev.off()
 
+#CIs
+fixpropbinB_pred2.CI<-summaryBy(BFIXBIN~time+Context+Participant+AGEYEAR+BPVS,data=fixpropbinB_pred2,FUN=mean,keep.names=T)
+fixpropbinB_pred2.CI2<-fixpropbinB_pred2.CI
+fixpropbinB_pred2.CI2$Voc2<-"1st quartile"
+fixpropbinB_pred2.CI2$Voc2[fixpropbinB_pred2.CI2$BPVS>30]<-"Interquartile"
+fixpropbinB_pred2.CI2$Voc2[fixpropbinB_pred2.CI2$BPVS>54]<-"3rd quartile"
+fixpropbinB_pred2.CI<-summaryBy(BFIXBIN~time+Context+AGEYEAR,data=fixpropbinB_pred2.CI,FUN=c(mean,ci.low,ci.high),keep.names=T)
+fixpropbinB_pred2.CI2<-summaryBy(BFIXBIN~time+Context+Voc2,data=fixpropbinB_pred2.CI2,FUN=c(mean,ci.low,ci.high),keep.names=T)
+fixpropbinB_pred2.CI$AGEYEAR<-factor(fixpropbinB_pred2.CI$AGEYEAR,levels=c("Two","Three","Four-Five"))
+fixpropbinB_pred2.CI2$Voc2<-factor(fixpropbinB_pred2.CI2$Voc2,levels=c("1st quartile","Interquartile","3rd quartile"))
+
+rec_cost_CI_comb_age<-ggplot(fixpropbinB_pred2.CI,aes(x=time,y=BFIXBIN.mean,shape=Context))+
+  geom_point(stat = "identity", size = 2)+ 
+  geom_linerange(aes(ymin= (BFIXBIN.mean - BFIXBIN.ci.low), ymax= (BFIXBIN.mean + BFIXBIN.ci.high)), position = position_dodge(width=.9), size =0.5) +
+  ylim(c(0,1))+ylab("Proportion of Looks to Mildly Pred Pictures")+xlab("Time.ms")+theme(legend.position = "bottom")+
+  facet_grid(rows=vars(AGEYEAR))
+print(rec_cost_CI_comb_age)
+
+rec_cost_CI_comb_voc<-ggplot(fixpropbinB_pred2.CI2,aes(x=time,y=BFIXBIN.mean,shape=Context))+
+  geom_point(stat = "identity", size = 2)+ 
+  geom_linerange(aes(ymin= (BFIXBIN.mean - BFIXBIN.ci.low), ymax= (BFIXBIN.mean + BFIXBIN.ci.high)), position = position_dodge(width=.9), size =0.5) +
+  ylim(c(0,1))+ylab("Proportion of Looks to Mildly Pred Pictures")+xlab("Time.ms")+theme(legend.position = "bottom")+
+  facet_grid(rows=vars(Voc2))
+
+print(rec_cost_CI_comb_voc)
+
+rec_prop_comb<-ggarrange(rec_cost_CI_comb_age,rec_cost_CI_comb_voc,labels=c("A", "B"),common.legend = T, legend="bottom")
+print(rec_prop_comb)
+
 ##################
 #Recognition Speed
 #################
@@ -2688,3 +2804,25 @@ summary(ttf.lmer.reccost.AV)
 # VC            -1.407      1.085  -1.297
 # PCC:AC        -2.689      3.285  -0.819
 # PCC:VC        -2.682      2.118  -1.266
+confint(ttf.lmer.reccost.AV, method="Wald")
+# (Intercept)  759.316998 828.2246656
+# PCC         -143.960628 -38.0223830
+# AC            -4.366639   2.2277732
+# VC            -3.532794   0.7195026
+# PCC:AC        -9.126877   3.7493598
+# PCC:VC        -6.832603   1.4687983
+ttf.lmer.reccost.A<-lmer(FixStartRel~1+PCC*(AC)+(1|Participant)+(1+PCC||ItemF),data= tff.rs.m.B,REML=F)
+summary(ttf.lmer.reccost.A)
+ttf.lmer.reccost.V<-lmer(FixStartRel~1+PCC*(VC)+(1|Participant)+(1+PCC||ItemF),data= tff.rs.m.B,REML=F)
+summary(ttf.lmer.reccost.V)
+
+#graph
+tff.rs.m.B.CI<-summaryBy(FixStartRel~Participant+Context,data=tff.rs.m.B,FUN=c(mean), keep.names=T)
+tff.rs.m.B.CI<-summaryBy(FixStartRel~Context,data=tff.rs.m.B,FUN=c(mean,ci.low,ci.high))
+tff.barplot<-ggplot(tff.rs.m.B.CI,aes(y=FixStartRel.mean,x=Context,shape=Context))+geom_pointrange(aes(y=FixStartRel.mean,ymin=FixStartRel.mean-FixStartRel.ci.low,ymax=FixStartRel.mean+FixStartRel.ci.high))+ylab("Time to first fixation (ms)")+theme(legend.position = "none")                         
+print(tff.barplot)
+
+rec_cost_all<-ggarrange(rec_prop_comb,tff.barplot,ncol=2,widths = c(2,1),labels=c("","C"))
+print(rec_cost_all)
+ggsave("CI_reccost_children_prop_tff.png", plot=rec_cost_all, width=45, height=15, unit="cm", dpi=300, path=getwd())
+dev.off()

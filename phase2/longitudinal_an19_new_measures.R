@@ -96,6 +96,17 @@ corr_test1.raw<-ggpairs(graph.raw,columns=c("Graded Pred","Pos Pred","Neg Pred",
 print(corr_test1.raw)
 ggsave("Corr_test1.raw.png", plot=corr_test1.raw, width=30, height=15, unit="cm", dpi=300, path=getwd())
 
+cor.test(all$rawPred, all$Age) #0.1930198 , t = 2.871, df = 213, p-value = 0.004504
+cor.test(all$rawPred, all$BPVS) #0.214173, t = 3.2, df = 213, p-value = 0.001584
+cor.test(all$rawUnpred, all$Age) #-0.06369757, t = -0.93153, df = 213, p-value = 0.3526
+cor.test(all$rawUnpred, all$BPVS) #-0.01097391, t = -0.16017, df = 213, p-value = 0.8729
+cor.test(all$PrecC_raw, all$Age) #0.368942, t = 5.7932, df = 213, p-value = 2.459e-08
+cor.test(all$PrecC_raw, all$BPVS) #0.3257412 , t = 5.0283, df = 213, p-value = 1.049e-06
+
+cor.test(all$tff_raw, all$Age) #-0.2965319, t = -4.5316, df = 213, p-value = 9.755e-06
+cor.test(all$tff_raw, all$BPVS) #-0.2942354  , t = -4.4931, df = 213, p-value = 1.151e-05
+
+cor.test(all$Age, all$BPVS) #0.8032239, t = 19.68, df = 213, p-value < 2.2e-16
 
 # Multiple regression predicting Vocabulary at time 1
 # First regress Age out of Vocabulary
@@ -168,12 +179,55 @@ corr_test2.raw<-ggpairs(graph2.raw,columns=c("Graded Pred","Pos Pred","Neg Pred"
 print(corr_test2.raw)
 ggsave("corr_test2.raw.png", plot=corr_test2.raw, width=30, height=15, unit="cm", dpi=300, path=getwd())
 
+cor.test(data.wi$RawBPVSScore1,data.wi$RawBPVSScore2)#0.7390874 , t = 7.9121, df = 52, p-value = 1.754e-10
+cor.test(data.wi$RawBPVSScore1,data.wi$Ageatfirsttest)#0.7545337, t = 8.2909, df = 52, p-value = 4.429e-11
+cor.test(data.wi$RawBPVSScore2,data.wi$Ageatsecondtest)#0.6271358, t = 5.806, df = 52, p-value = 3.892e-07
+
 #multiple regression predicting vocabulary at test 2 as a function of the indeces at test 1 while controlling for vocabulary at test 1
 mr.all2.voc<-lm(RawBPVSScore2~1+PrecC+Speed+RawBPVSScore1+Ageatsecondtest+Ageatfirsttest,data=data.wi)
 summary(mr.all2.voc)
 
 mr.all2.voc.raw<-lm(RawBPVSScore2~1+PrecC_raw+tff_raw+RawBPVSScore1+Ageatsecondtest+Ageatfirsttest,data=data.wi)
 summary(mr.all2.voc.raw)
+
+mr.all2.voc.raw.P<-lm(RawBPVSScore2~1+PrecC_raw+RawBPVSScore1+Ageatsecondtest+Ageatfirsttest,data=data.wi)
+summary(mr.all2.voc.raw.P)
+
+mr.all2.voc.raw.R<-lm(RawBPVSScore2~1+tff_raw+RawBPVSScore1+Ageatsecondtest+Ageatfirsttest,data=data.wi)
+summary(mr.all2.voc.raw.R)
+
+#no voc 1
+mr.all2.voc.raw2<-lm(RawBPVSScore2~1+PrecC_raw+tff_raw+Ageatsecondtest+Ageatfirsttest,data=data.wi)
+summary(mr.all2.voc.raw2)
+
+mr.all2.voc.raw2.P<-lm(RawBPVSScore2~1+PrecC_raw+Ageatsecondtest+Ageatfirsttest,data=data.wi)
+summary(mr.all2.voc.raw2.P)
+
+mr.all2.voc.raw2.R<-lm(RawBPVSScore2~1+tff_raw+Ageatsecondtest+Ageatfirsttest,data=data.wi)
+summary(mr.all2.voc.raw2.R)
+
+#no ages
+mr.all2.voc.raw2<-lm(RawBPVSScore2~1+PrecC_raw+tff_raw,data=data.wi)
+summary(mr.all2.voc.raw2)
+
+mr.all2.voc.raw2.P<-lm(RawBPVSScore2~1+PrecC_raw,data=data.wi)
+summary(mr.all2.voc.raw2.P)
+
+mr.all2.voc.raw2.R<-lm(RawBPVSScore2~1+tff_raw,data=data.wi)
+summary(mr.all2.voc.raw2.R)
+
+#predicting Voc 1 in sub-sample
+mr.all2.voc.raw3<-lm(RawBPVSScore1~1+PrecC_raw+tff_raw,data=data.wi)
+summary(mr.all2.voc.raw3)
+
+mr.all2.voc.raw3.P<-lm(RawBPVSScore1~1+PrecC_raw,data=data.wi)
+summary(mr.all2.voc.raw3.P)
+
+mr.all2.voc.raw3.R<-lm(RawBPVSScore1~1+tff_raw,data=data.wi)
+summary(mr.all2.voc.raw3.R)
+
+# correlation between raw pred and recognition
+cor.test(data.wi$PrecC_raw,data.wi$tff_raw)#-0.2311003 , t = -1.7129, df = 52, p-value = 0.0927
 
 # multiple regression models involving our measure of grammar knowledge
 # Predicting vocabulary at test 2, while controlling for age at test 2
@@ -229,8 +283,26 @@ summary(mVCp.raw)
 # PrecC_raw      35.7716    17.5560   2.038   0.0468 *
 #   RawBPVSScore1  -0.1527     0.2221  -0.687   0.4950 
 
+# excluding outlier
+mVCp.raw.out<-lm(LanCh~1+PrecC_raw+RawBPVSScore1,data=subset(data.wi,PrecC_raw>-.3))
+summary(mVCp.raw.out)
+
+mVC.raw.out<-lm(LanCh~1+tff_raw+RawBPVSScore1,data=subset(data.wi,PrecC_raw>-.3))
+summary(mVC.raw.out)
+
 mVCp.raw.Ponly<-lm(LanCh~1+rawPred+RawBPVSScore1,data=data.wi)
 summary(mVCp.raw.Ponly)
+
+#graph
+pred_raw_all<-ggplot(data.wi,aes(PrecC_raw,LanCh))+geom_point()+geom_smooth(method="lm",col="violet")+ylab("Vocabulary Growth (%)")+xlab("Combined Prediction Index")
+print(pred_raw_all)
+rec_raw_all<-ggplot(data.wi,aes(tff_raw,LanCh))+geom_point()+geom_smooth(method="lm",col="violet")+ylab("Vocabulary Growth (%)")+xlab("Recognition Speed")
+print(rec_raw_all)
+
+pred_rec_raw_all<-ggarrange(rec_raw_all,pred_raw_all,labels = c("A","B"))
+print(pred_rec_raw_all)
+ggsave("rec_pred_raw_all.png", plot=pred_rec_raw_all, width=30, height=15, unit="cm", dpi=300, path=getwd())
+
 
 ### Mediation analysis (raw scores)
 ## PrecC as the mediator
@@ -248,6 +320,14 @@ summary(med.out2.raw)
 summary(med.fit2.raw)
 
 summary(lm(LanCh~1+PrecC_raw+tff_raw+RawBPVSScore1,data=data.wi))
+# Coefficients:
+#   Estimate Std. Error t value Pr(>|t|)  
+# (Intercept)   28.12153   19.97833   1.408   0.1654  
+# PrecC_raw     28.62830   17.68410   1.619   0.1118  
+# tff_raw       -0.03362    0.01917  -1.754   0.0855 .
+# RawBPVSScore1 -0.22523    0.22161  -1.016   0.3144 
+
+summary(lm(LanCh~1+PrecC_raw+tff_raw,data=data.wi))
 
 ## Pred as the mediator
 med.fit3.raw<-lm(rawPred~1+tff_raw+RawBPVSScore1,data=data.wi)

@@ -1,5 +1,5 @@
 ---
-title: "Gambi, Jindal, Sharpe, Pickering, & Rabagliati (2019). What is the relation between preschoolers’ vocabulary growth and their ability to predict and recognize words in sentences?"
+title: "Gambi, Jindal, Sharpe, Pickering, & Rabagliati (2019). The relation between preschoolers’ vocabulary growth and their ability to predict and recognize words."
 output: 
   html_document:
     toc: true

@@ -1,5 +1,5 @@
 ---
-title: "Gambi, Jindal, Sharpe, Pickering, & Rabagliati (2019). The relation between preschoolers’ vocabulary growth and their ability to predict and recognize words."
+title: "Gambi, Jindal, Sharpe, Pickering, & Rabagliati (2019). The relation between preschoolers’ vocabulary development and their ability to predict and recognize words."
 output: 
   html_document:
     toc: true
@@ -19,7 +19,7 @@ knitr::opts_chunk$set(echo = TRUE, eval=FALSE)
 ## NOTE: The data have been pre-processed to remove 295 trials (4.6%) 
 ## where children pointed or spoke before the sentence was over;
 ## Trials were children pointed to the incorrect picture are included (see Correct column)
-al<-read.table("https://raw.githubusercontent.com/chiara-gambi/gradedpred/master/phase1/children.txt",header=T)
+al<-read.table("https://raw.githubusercontent.com/chiara-gambi/gradedpred/master/phase1/children_CORRECT.txt",header=T)
 
 # load packages
 library(doBy)
@@ -294,6 +294,21 @@ summary(mdiffPredUnpred.A)
 
 mdiffPredUnpred.V<-lmer(Elog~1+(t1+t2)*(Pred+Unpred)*(VC)+(1+t1+t2|Participant)+(1+t1+t2|Participant:Pred)+(1+t1+t2|Participant:Unpred),data=gca,REML=F,control=lmerControl(check.conv.singular = .makeCC(action = "ignore",  tol = 1e-4)))
 summary(mdiffPredUnpred.V)
+
+## Model comparison
+# compare age only model to age+voc model
+anova(mdiffPredUnpred.A,mdiffPredUnpred.AV)#17.463      9    0.04194 *
+#compare voc only model to age+voc model
+anova(mdiffPredUnpred.V,mdiffPredUnpred.AV)#14.808      9    0.09635 .
+
+# Test separately adding interactions between Voc and Pred and between Voc and Unpred
+mdiffPredUnpred.AVB<-lmer(Elog~1+(t1+t2)*(Pred+Unpred)*(AC)+(t1+t2)*(VC)+(1+t1+t2|Participant)+(1+t1+t2|Participant:Pred)+(1+t1+t2|Participant:Unpred),data=gca,REML=F,control=lmerControl(check.conv.singular = .makeCC(action = "ignore",  tol = 1e-4)))
+mdiffPredUnpred.AVP<-lmer(Elog~1+(t1+t2)*(Pred+Unpred)*(AC)+(t1+t2)*(Pred)*(VC)+(1+t1+t2|Participant)+(1+t1+t2|Participant:Pred)+(1+t1+t2|Participant:Unpred),data=gca,REML=F,control=lmerControl(check.conv.singular = .makeCC(action = "ignore",  tol = 1e-4)))
+# adding interactions between Voc and the Pred-MildyPred contrast
+anova(mdiffPredUnpred.AVB,mdiffPredUnpred.AVP)#5.1359      3     0.1621
+# adding interactions between Voc and the Unpred-MildlyPred contrast
+anova(mdiffPredUnpred.AVP,mdiffPredUnpred.AV)#10.494      3     0.0148 *
+
 
 ## By-participant analyses, separately for A-biasing and C-biasing contexts (section 4.2, Supplement)
 gca<-as.data.frame(diff)
@@ -656,6 +671,10 @@ confint(ttf.lmer.reccost.A, method="Wald")
 ttf.lmer.reccost.V<-lmer(FixStartRel~1+PCC*(VC)+(1|Participant)+(1+PCC||ItemF),data= tff.rs.m.B,REML=F)
 summary(ttf.lmer.reccost.V)
 confint(ttf.lmer.reccost.V, method="Wald")
+
+#compare AV model to A only model
+anova(ttf.lmer.reccost.AV,ttf.lmer.reccost.A)#3.2415      2     0.1977
+anova(ttf.lmer.reccost.AV,ttf.lmer.reccost.V)#1.045      2      0.593
 ```
 
 ### Relation between revision skill, vocabulary size and age
@@ -779,11 +798,11 @@ data.wi<-data.wi[data.wi$LanCh<200,]
 ```{r graph long}
 # Figure 5, main text
 # Panel A
-pred_raw_all<-ggplot(data.wi,aes(PrecC_raw,LanCh))+geom_point()+geom_smooth(method="lm",col="violet")+ylab("Vocabulary Growth (%)")+xlab("Graded Prediction Measure (Prediction Skill)")
+pred_raw_all<-ggplot(data.wi,aes(PrecC_raw,LanCh))+geom_point()+geom_smooth(method="lm",col="violet")+ylab("Vocabulary Change (%)")+xlab("Graded Prediction Measure (Prediction Skill)")
 # Panel B
-predrev_raw_all<-ggplot(data.wi,aes(predrevR,LanCh))+geom_point()+geom_smooth(method="lm",col="violet")+ylab("Vocabulary Growth (%)")+xlab("Predict-and-Redirect Measure (Revision Skill)")
+predrev_raw_all<-ggplot(data.wi,aes(predrevR,LanCh))+geom_point()+geom_smooth(method="lm",col="violet")+ylab("Vocabulary Change (%)")+xlab("Predict-and-Redirect Measure (Revision Skill)")
 # Panel C
-rec_raw_all<-ggplot(data.wi,aes(tff_raw,LanCh))+geom_point()+geom_smooth(method="lm",col="violet")+ylab("Vocabulary Growth (%)")+xlab("Time to first fixation (Processing Speed)")
+rec_raw_all<-ggplot(data.wi,aes(tff_raw,LanCh))+geom_point()+geom_smooth(method="lm",col="violet")+ylab("Vocabulary Change (%)")+xlab("Time to first fixation (Processing Speed)")
 
 # Combine the panels
 pred_rec_predrev_raw_all<-ggarrange(pred_raw_all,predrev_raw_all,rec_raw_all,labels = c("A","B","C"), nrow=1)
@@ -791,9 +810,9 @@ ggsave("rec_pred_predrev_raw_all.png", plot=pred_rec_predrev_raw_all, width=45, 
 
 # Figure S6, Section 7, Supplement
 # Panel A, preference
-pred_raw_pref<-ggplot(data.wi,aes(rawPred,LanCh))+geom_point()+geom_smooth(method="lm",col="violet")+ylab("Vocabulary Growth (%)")+xlab("Looks to Predictable - Mildly predictable pictures")
+pred_raw_pref<-ggplot(data.wi,aes(rawPred,LanCh))+geom_point()+geom_smooth(method="lm",col="violet")+ylab("Vocabulary Change (%)")+xlab("Looks to Predictable - Mildly predictable pictures")
 # Panel B, dispreference
-pred_raw_dispref<-ggplot(data.wi,aes(rawUnpred,LanCh))+geom_point()+geom_smooth(method="lm",col="violet")+ylab("Vocabulary Growth (%)")+xlab("Looks to Unpredictable - Mildly predictable pictures")
+pred_raw_dispref<-ggplot(data.wi,aes(rawUnpred,LanCh))+geom_point()+geom_smooth(method="lm",col="violet")+ylab("Vocabulary Change (%)")+xlab("Looks to Unpredictable - Mildly predictable pictures")
 # combine the panels
 pred_pred_dispref_raw_all<-ggarrange(pred_raw_pref,pred_raw_dispref,labels = c("A","B"), nrow=1)
 ggsave("pred_pred_dispref_raw_all.png", plot=pred_pred_dispref_raw_all, width=45, height=15, unit="cm", dpi=300, path=getwd())
@@ -840,7 +859,7 @@ anova(mVC.pr.baseline,mVC.pr.C)
 
 
 # Controlling for Age at Phase 1 (section 8, Supplement)
-# Separate models predicting Vocabulary Growth
+# Separate models predicting Vocabulary Change
 ## Prediction skill (combined measure)
 mAp.raw.scale<-lm(LanCh~1+scale(PrecC_raw,T,T)+scale(Ageatfirsttest, T, F),data=data.wi)
 summary(mAp.raw.scale)
@@ -858,6 +877,19 @@ mVC.pr.baseline.A<-lm(LanCh~1+scale(Ageatfirsttest,T,F),data=data.wi)
 mVC.pr.C.A<-lm(LanCh~1+scale(CPR,T,T)+scale(Ageatfirsttest,T,F),data=data.wi)
 summary(mVC.pr.C.A)
 anova(mVC.pr.baseline.A,mVC.pr.C.A)
+
+## Commonality analysis
+library(yhat)
+data.wi$scaleP<-scale(data.wi$PrecC_raw,T,T)
+data.wi$scaleS<-scale(data.wi$tff_raw,T,T)
+data.wi$centerV1<-scale(data.wi$RawBPVSScore1,T,F)
+data.wisel<-data.wi[,c(10,60:62)]
+commonalityCoefficients(data.wi,dv="LanCh", ivlist=list("scaleP","scaleS","centerV1"))
+lm.out<-lm(LanCh~1+scaleP+scaleS+centerV1,data=data.wisel)
+rg.out<-calc.yhat(lm.out)
+rg.out
+
+
 ```
 
 # Supplementary Analyses: Knowledge of Grammar and SES {.tabset .tabset-fade}
@@ -879,15 +911,15 @@ summary(mr.all2.grammar)
 ## Graph
 ```{r graph supp}
 # Figure S1, Section 3, Supplement
-graph2.raw<-data.wi[,-c(23:24)] #(remove Age and BPVS to avoid duplicates)
-names(graph2.raw)[46]<-"Proc Speed"
-names(graph2.raw)[50]<-"Rev"
-names(graph2.raw)[52]<-"Comb Pred"
+graph2.raw<-data.wi[,-c(23:24,39:41)] #(remove Age and BPVS, and model-based Pred,Unpred and Speed to avoid duplicates)
+names(graph2.raw)[43]<-"Speed"
+names(graph2.raw)[47]<-"Rev"
+names(graph2.raw)[49]<-"Pred"
 names(graph2.raw)[8]<-"BPVS"
 names(graph2.raw)[5]<-"Age"
 names(graph2.raw)[18]<-"SES"
 names(graph2.raw)[11]<-"TROG"
-corr_test2.raw<-ggpairs(graph2.raw,columns=c("Comb Pred","Rev","Proc Speed","Age","BPVS","TROG","SES"), lower = list(continuous = my_fn))
+corr_test2.raw<-ggpairs(graph2.raw,columns=c("Pred","Rev","Speed","Age","BPVS","TROG","SES"), lower = list(continuous = my_fn))+theme(axis.text.x = element_text(size=5))
 ggsave("corr_test2.raw.png", plot=corr_test2.raw, width=30, height=15, unit="cm", dpi=300, path=getwd())
 ```
 

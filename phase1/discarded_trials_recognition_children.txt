@@ -378,7 +378,7 @@
 "377" "P143Task2" "FLAT" "B" "Two" 0
 "378" "P143Task2" "FLAT" "C" "Two" 0.333333333333333
 "379" "P144Task2" "ABC" "A" "Four-Five" 0.2
-"380" "P144Task2" "ABC" "B" "Four-Five" 0.25
+"380" "P144Task2" "ABC" "B" "Four-Five" 0
 "381" "P144Task2" "CBA" "B" "Four-Five" 0
 "382" "P144Task2" "CBA" "C" "Four-Five" 0
 "383" "P144Task2" "FLAT" "A" "Four-Five" 0
@@ -838,7 +838,7 @@
 "837" "P210Task2" "FLAT" "B" "Two" 0
 "838" "P210Task2" "FLAT" "C" "Two" 0
 "839" "P211Task2" "ABC" "A" "Two" 0
-"840" "P211Task2" "ABC" "B" "Two" 0.5
+"840" "P211Task2" "ABC" "B" "Two" 0
 "841" "P211Task2" "CBA" "B" "Two" 0.333333333333333
 "842" "P211Task2" "CBA" "C" "Two" 0
 "843" "P211Task2" "FLAT" "A" "Two" 0
@@ -1473,7 +1473,7 @@
 "1472" "P95Task2" "FLAT" "B" "Three" 0
 "1473" "P95Task2" "FLAT" "C" "Three" 0
 "1474" "P96Task2" "ABC" "A" "Three" 0
-"1475" "P96Task2" "ABC" "B" "Three" 0.25
+"1475" "P96Task2" "ABC" "B" "Three" 0
 "1476" "P96Task2" "CBA" "B" "Three" 0
 "1477" "P96Task2" "CBA" "C" "Three" 0
 "1478" "P96Task2" "FLAT" "A" "Three" 0

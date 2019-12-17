@@ -1,224 +1,224 @@
-﻿Numb,List,Task,Location,Date,Time,Exp,Age,Sex,Language,BPVS,Notes,TR,ETCODE,Consent,AGEYEAR,retest
-1,1,"1,2",Highland Fling,04/04/2016,09:20,CG,43,F,English,28,NA,82.4,P01Task1,NA,Three,Y
-2,2,"1,2",Highland Fling,04/04/2016,09:50,CG,42,F,English,40,NA,94.7,P02Tas1,NA,Three,Y
-3,3,"1,2",Highland Fling,04/04/2016,10:15,CG,46,M,English,51,Poor calibration in Block 1; gets distracted by moise on Trial 10 of Block 2,85.6,P03Task1,NA,Three,Y
-4,1,"3,4",Highland Fling,04/04/2016,10:40,CG,39,M,English,35,Poor calibration in Block 2,77.7,P04Task2,NA,Three,Y
-5,2,"3,4",Bonnington House,05/04/2006,NA,CG,26,F,English,30,Sometimes does not point; discontinued BPVS because of tiredness; gets distracted on trial 13 of block 2,72.7,P05Task2,NA,Two,N
-6,3,"3,4",Bonnington House,05/04/2006,NA,CG,34,F,English,44,NA,78.3,P06Task2,NA,Two,N
-7,1,"1,2",Bonnington House,05/04/2006,NA,CG,35,M,English,37,NA,79.2,P07Task1,NA,Two,N
-8,2,"1,2",Bonnington House,05/04/2006,NA,CG,30,M,English,12,Does not really understand task; rarely points to picture,85.7,P08Task1,NA,Two,N
-9,3,"1,2",Bonnington House,05/04/2006,NA,CG,36,F,English,47,Poor claibration before block 2,79.5,P09Task1,NA,Three,N
-10,1,"3,4",Bonnington House,05/04/2006,NA,CG,35,F,English,30,"Very distracted, moves a lot, speaks over sentences; sometimes does not point; distracted on trials 6 and 14 of block1, 8 and 10 of block 2",48.7,P10Task2,NA,Two,N
-11,2,"3,4",Bonnington House,05/04/2006,NA,CG,24,M,English,23,"Distarcted on trials 8 and 10 of block 1, 15 of block 2",85.8,P11Task2,NA,Two,N
-12,3,"3,4",Bonnington House,05/04/2006,NA,CG,32,F,English,40,NA,84.5,P12Task2,NA,Two,N
-13,1,"1,2",Highland Fling,06/04/2016,12:35,CG,40,F,English,31,"DISCARD: Speech delay but good comprehension; often moves, gets distracted before question",69.9,P13Task1,NA,DISCARD,N
-14,2,"1,2",Highland Fling,06/04/2016,13:00,CG,45,F,English,19,"Trial 10, block2: distracted. Random responding in BPVS?",86.1,P14Task1,NA,Three,Y
-15,3,"1,2",Highland Fling,06/04/2016,13:20,CG,43,M,English,40,Moves a lot; distracted on trial 9 Block 1 and trial 12 block 2; moved on trial 10 block 2,88.8,P15Task1,NA,Three,Y
-16,1,"3,4",Highland Fling,06/04/2016,13:45,CG,47,M,English,37,NA,84,P16Task2,NA,Three,N
-17,2,"3,4",Highland Fling,06/04/2016,14:10,CG,45,M,English,55,NA,90.4,P17Task2,NA,Three,Y
-18,3,"3,4",Highland Fling,07/04/2016,12:40,CG,40,F,English,33,"DISCARD; Very poor calibration; also distracted on trial 9, block 2",34.3,P18Task2bis,NA,DISCARD,N
-19,1,"1,2",Highland Fling,07/04/2016,13:00,CG,44,F,English,41,Poor first calibration,71.62,P19Task1,NA,Three,Y
-20,2,"1,2",Highland Fling,07/04/2016,13:30,CG,50,F,English,48,NA,94.9,P20Task1,NA,Four-Five,N
-21,3,"1,2",Highland Fling,07/04/2016,14:00,CG,52,M,English,69,NA,92,P21Task1,NA,Four-Five,N
-22,1,"3,4",Forest Friends,12/04/2016,NA,CG,38,M,English,30,Poor first calibration,77.4,P22Task2,NA,Three,N
-23,2,"3,4",Forest Friends,12/04/2016,NA,CG,51,F,English,53,NA,75.4,P23Task2,NA,Four-Five,N
-24,3,"3,4",Forest Friends,12/04/2016,NA,CG,41,M,English,58,Glasses: first and second calibration poor; moves about a lot,46.5,P24Task2,NA,Three,Y
-25,1,"1,2",Forest Friends,12/04/2016,NA,CG,57,M,English,44,NA,81.3,P25Task1,NA,Four-Five,N
-26,2,"1,2",Forest Friends,12/04/2016,NA,CG,54,F,English,55,NA,84.8,P26Task1,NA,Four-Five,N
-27,3,"1,2",Argyle Bridge,15/04/2016,09:30,CG,41,M,English,30,moves a lot,78.4,P27Task1,NA,Three,N
-28,1,"3,4",Argyle Bridge,15/04/2016,10:00,CG,48,F,English,38,"Trial 1, Block 1; trial 8 and 9 Block 2: distracted",74,P28Task2,NA,Four-Five,N
-29,2,"3,4",Argyle Bridge,15/04/2016,10:30,CG,48,F,English,52,NA,75.8,P29Task2,NA,Four-Five,N
-30,3,"3,4",Clover Countery Nurser,19/04/2016,NA,CG,39,M,English,32,NA,80.3,P30Task2,NA,Three,N
-31,1,"1,2",Clover Countery Nurser,19/04/2016,NA,CG,50,F,English,72,NA,84.8,P31Task1,NA,Four-Five,N
-32,2,"1,2",Clover Countery Nurser,19/04/2016,NA,CG,37,F,English,38,"Poor first calibration; Trial 1, Block 1:distracted",72.8,P32Task1,NA,Three,Y
-33,3,"1,2",Clover Countery Nurser,19/04/2016,NA,CG,55,F,English,82,Second calibaration poor,83.5,P33Task1,NA,Four-Five,N
-34,1,"3,4",Clover Countery Nurser,19/04/2016,NA,CG,43,M,English,47,Poor first calibration,58,P34Task2,NA,Three,N
-35,2,"3,4",Clover Countery Nurser,19/04/2016,NA,CG,47,M,English,54,NA,95.5,P35Task2,NA,Three,N
-36,3,"3,4",Clover Countery Nurser,19/04/2016,NA,CG,48,F,English,37,NA,82.3,P36Task2,NA,Four-Five,N
-37,1,"1,2",Lab,20/04/2016,11:15,CG,37,F,English,38,"Trial 12, Block 2: distracted, moves",80.5,P37Task1,NA,Three,Y
-38,2,"1,2",Lab,20/04/2016,14:30,CG,54,F,English,64,NA,79,P38Task1,NA,Four-Five,Y
-39,3,"1,2",Lab,20/04/2016,16:15,CG,54,M,English,56,NA,80.6,P39Task1,NA,Four-Five,Y
-40,1,"3,4",Stanweel Nursery School,25/04/2016,NA,CG,51,F,English,63,NA,86.5,P40Task2,NA,Four-Five,Y
-41,2,"3,4",Stanweel Nursery School,25/04/2016,NA,CG,43,M,English,28,"Poor first calibration; Trial 8, Block 1 and Trial 8 Block 2: distracted",85.4,P41Task2,NA,Three,N
-42,3,"3,4",Stanweel Nursery School,25/04/2016,NA,CG,54,F,English,34,"Poor first calibration (glasses);  Trial 1, Block 1 and Trial 11 and 13, Block 2: distracted",70.6,P42Task2,NA,Four-Five,N
-43,1,"1,2",Stanweel Nursery School,25/04/2016,NA,CG,50,F,English,44,"Always points before question; Trial 15, Block 2: ended by mistake before question",75.5,P43Task1,NA,Four-Five,N
-44,2,"1,2",Stanweel Nursery School,25/04/2016,NA,CG,52,F,English,66,NA,88.4,P44Task1,NA,Four-Five,N
-45,3,"1,2",Stanweel Nursery School,25/04/2016,NA,CG,54,F,English,71,NA,89.6,P45Task1,NA,Four-Five,N
-46,1,"3,4",Stanweel Nursery School,25/04/2016,NA,CG,60,M,English,93,"Trial 13, Block 2: distracted",85.7,P46Task2,NA,Four-Five,N
-47,2,"3,4",Stanweel Nursery School,25/04/2016,NA,CG,49,F,English,60,NA,78,P47Task2,NA,Four-Five,N
-48,3,"3,4",Stanweel Nursery School,25/04/2016,NA,CG,32,F,English,34,Moves a lot,76.7,P48Task2,NA,Two,N
-49,1,"1,2",Stanweel Nursery School,25/04/2016,NA,CG,49,M,English,55,NA,79.5,P49Task1,NA,Four-Five,N
-50,2,"1,2",Lab,26/04/2016,11:15,CG,38,F,"English,German, Spanish",54,"Poor second calibration; Trial 15, Block 1:distracted",84,P50Task1,NA,Three,Y
-51,3,"1,2",Lab,26/04/2016,13:15,CG,54,M,English,57,NA,85.6,P51Task1,NA,Four-Five,N
-52,1,"3,4",Clover Countery Nurser,27/04/2016,NA,CG,36,M,English,29,"Trial 5, Block 1 and trial 12. Block 2: distracted",90.3,P52Task2,NA,Three,Y
-53,2,"3,4",Clover Countery Nurser,27/04/2016,NA,CG,39,F,English,26,Poor 1st and 2nd calibration,77.9,P53Task2,NA,Three,N
-54,3,"3,4",Clover Countery Nurser,27/04/2016,NA,CG,42,F,English,32,"trial 7, Block 1: distracted",89.6,P54Task2,NA,Three,Y
-55,1,"1,2",Clover Countery Nurser,27/04/2016,NA,CG,53,F,English,55,NA,80.4,P55Task1,NA,Four-Five,N
-56,2,"1,2",Clover Countery Nurser,27/04/2016,NA,CG,40,F,English,31,NA,81.8,P56Task1,NA,Three,Y
-57,3,"1,2",Clover Countery Nurser,27/04/2016,NA,CG,45,M,English,47,"Trial 15, Block 1: distracted. Trial 13, Block 2: puts hands over eyes",75.3,P57Task1,NA,Three,N
-58,1,"3,4",Clover Countery Nurser,27/04/2016,NA,CG,38,M,English,26,Poor second calibration; moves a lot,81.5,P58Task2,NA,Three,N
-59,2,"3,4",Lab,28/04/2016,10:20,CG,40,M,"English, Finnish",35,Moves a lot,84,P59Task2,NA,Three,Y
-60,3,"3,4",Lab,28/04/2016,16:15,CG,44,M,English,NA,"DISCARD: Does not follow task instructions and points to other pictures, not the one he is asked about",53.11,P60Task2,NA,DISCARD,N
-61,1,"1,2",Lab,29/04/2016,10:20,CG,56,F,English,61,NA,84,P61Task1bis,NA,Four-Five,Y
-62,2,"1,2",Lab,02/05/2016,10:40,CG,46,M,English,55,Poor first calibration,82.2,P62Task1,NA,Three,Y
-63,3,"1,2",Lab,02/05/2016,15:45,CG,57,M,"English, German",42,ONLY B1 and 4 trials from B2; experiment interrupted because of experimenter error,65.8,P63Task1,NA,DISCARD,N
-64,1,"3,4",Broxburn Wee gems,03/05/2016,NA,CG,33,F,English,32,"Trials 8, 13, B1: distracted",68,P64Task2,NA,Two,N
-65,2,"3,4",Broxburn Wee gems,03/05/2016,NA,CG,27,M,English,21,"Trials 7, 10, 11, 12, 13 in Block 1; Trials 1, 2, 3, 4 in Block 2: distracted or speaks over sentence; 1st and 2nd calibration poor; often does not point or points to the wrong picture",67.5,P65Task2,NA,Two,N
-66,3,"3,4",Broxburn Wee gems,03/05/2016,NA,CG,27,M,English,22,"Trials 6 and 10, Block 1; Trials 13 and 15, Block 2: distracted or points too ealry. 1st and 2nd calibrations poor; during 2nd block he is not paying much attention to the sentences",69.5,P66Task2,NA,Two,N
-67,1,"1,2",Camperdown Nursery,04/05/2016,NA,CG,60,F,English,68,"Trials 2 and 4, Block 2: distracted; Poor second calibration; BPVS discontinued bo tiredness",65.8,P67Task1,NA,Four-Five,N
-68,2,"1,2",Camperdown Nursery,04/05/2016,NA,CG,49,M,English,38,"Trial 5 and 15, Block 2: distracted",73.7,P68Task1,NA,Four-Five,N
-69,3,"1,2",Camperdown Nursery,04/05/2016,NA,CG,33,F,English,21,Poor first and second calibration,85.4,P69Task1,NA,Two,N
-70,1,"3,4",Camperdown Nursery,04/05/2016,NA,CG,40,M,English,43,"Trials 5, 11, 15 Block 2: distracted; Poor first and second calibration",72.8,P70Task2,NA,Three,N
-71,2,"3,4",Camperdown Nursery,04/05/2016,NA,CG,40,M,English,33,NA,93,P71Task2,NA,Three,N
-72,3,"3,4",Camperdown Nursery,04/05/2016,NA,CG,38,M,English,52,"Trial 14, Block2: distracted; poor first calibration",74.1,P72Task2,NA,Three,N
-73,1,"1,2",Camperdown Nursery,04/05/2016,NA,CG,60,F,English,48,"Trial 1, Block 1: distracted",77.5,P73Task1,NA,Four-Five,N
-74,2,"1,2",Camperdown Nursery,04/05/2016,NA,CG,54,M,English,40,"Trial 1, Block 1: distracted; blinks a lot",70.3,P74Task1,NA,Four-Five,N
-75,3,"1,2",Camperdown Nursery,04/05/2016,NA,CG,32,F,English,30,"Trials 8, 10 and 13, Block 2: distracted; poor first and second cal",36.6,P75Task1,NA,Two,N
-76,1,"3,4",Camperdown Nursery,04/05/2016,NA,CG,36,F,English,35,"Trial 9 and 12, Block 1: distracted or speaks on top",81.2,P76Task2,NA,Three,N
-77,2,"3,4",Camperdown Nursery,04/05/2016,NA,CG,36,F,English,27,"Trials 1, 3, 12, and 15, Block 1; Trial 8, Block 2: distracted; Poor second cal",72.1,P77Task2,NA,Three,N
-78,3,"3,4",Camperdown Nursery,04/05/2016,NA,CG,48,M,English,45,Poor first and second calibration,80.9,P78Task2,NA,Four-Five,N
-79,1,"1,2",Camperdown Nursery,04/05/2016,NA,CG,56,M,English,63,Poor second calibration,84.7,P79Task1,NA,Four-Five,N
-80,2,"1,2",Lab,05/05/2016,10:30,CG,44,M,English,50,"Trial 14, Block 1: distracted; Poor first calibration",83.4,P80Task1,NA,Three,Y
-81,3,"1,2",Lab,05/05/2016,11:05,CG,44,M,English,44,NA,86.4,P81Task1,NA,Three,Y
-82,1,"3,4",Lab,06/05/2016,11:35,AR,38,F,English,34,NA,72.8,P82,NA,Three,N
-83,2,"3,4",Lab,07/05/2016,11:35,AR,42,F,English,49,NA,73.4,P83,NA,Three,N
-84,3,"3,4",Lab,07/05/2016,11:55,AR,40,M,English,39,NA,55.6,P84,NA,Three,Y
-85,1,"1,2",Lab,09/05/2016,09:45,CG,61,M,English,68,NA,80.2,P85Task1,NA,DISCARD,Y
-86,2,"1,2",Lab,09/05/2016,10:15,CG,47,M,English,48,NA,85.7,P86Task1,NA,Three,Y
-87,3,"1,2",Lab,09/05/2016,NA,CG,47,M,English,47,"Missed a point in 2nd cal; T11, Block 2: distracted",84.8,P87Task1,NA,Three,N
-88,1,"3,4",Lab,09/05/2016,NA,CG,47,F,English,52,Moves a lot,73.3,P88Task2,NA,Three,N
-89,2,"3,4",Bonnington House,10/05/2016,NA,CG,48,F,English,54,"Trial 6, Block 1: distracted",87.7,P89Task2,NA,Four-Five,N
-90,3,"3,4",Bonnington House,10/05/2016,NA,CG,44,M,English,47,NA,92,P90Task2,NA,Three,Y
-91,1,"1,2",Bonnington House,10/05/2016,NA,CG,48,F,English,58,"Trial 2, Block 2: distracted",88.4,P91Task1,NA,Four-Five,Y
-92,2,"1,2",Bonnington House,10/05/2016,NA,CG,44,M,English,58,NA,91.1,P92Task1,NA,Three,Y
-93,3,"1,2",Bonnington House,10/05/2016,NA,CG,60,F,English,43,"Trial 10 and 13, Block 1; Trial 13, Block 2",73.6,P93Task1,NA,Four-Five,N
-94,1,"3,4",Bonnington House,10/05/2016,NA,CG,50,M,English,65,NA,87.6,P94Task2,NA,Four-Five,N
-95,2,"3,4",Bonnington House,10/05/2016,NA,CG,44,F,English,31,NA,94,P95Task2,NA,Three,N
-96,3,"3,4",Bonnington House,10/05/2016,NA,CG,39,F,English,32,"1st and 2nd cal poor; trial 4, block 1: speaks on top",86.5,P96Task2,NA,Three,N
-97,1,"1,2",Bonnington House,10/05/2016,NA,CG,38,M,"English, Gaelic",41,2nd cal poor,84,P97Task1,NA,Three,N
-98,2,"1,2",Bonnington House,10/05/2016,NA,CG,49,F,English,50,"Trial 9, Block 2: distracted",85.11,P98Task1,NA,Four-Five,N
-99,3,"1,2",Bonnington House,10/05/2016,NA,CG,37,M,English,35,"1st and 2nd cal poor; Trial 9, Block 1: speaks on top; Trial 10, 15, Block 2: distracted",82.9,P99Task1,NA,Three,Y
-100,1,"3,4",Bonnington House,10/05/2016,NA,CG,37,F,English,33,"Trial 11, 12, Block 1; Trial 11, Block 2: distracted",79.6,P100Task2,NA,Three,N
-101,2,"3,4",Bonnington House,10/05/2016,NA,CG,48,M,English,43,2nd cal poor,86.6,P101Task2,NA,Four-Five,N
-102,3,"3,4",Bonnington House,10/05/2016,NA,CG,48,F,English,41,NA,78.3,P102Task2,NA,Four-Five,Y
-103,1,"1,2",Bonnington House,10/05/2016,NA,CG,41,M,English,73,"BPVS on separate session (13/05/2016); 2nd cal poor; Trial 13, Block 2: distracted",78,P103Task1,NA,Three,N
-104,2,"1,2",Musselburgh Private Nursery,11/05/2016,NA,CG,35,F,"English, Flemish",30,NA,83.6,P104Task1,NA,Two,N
-105,3,"1,2",Musselburgh Private Nursery,11/05/2016,NA,CG,56,F,English,56,"Trial 13, Block 1, Trial 10, Block 2: distracted",79.1,P105Task1,NA,Four-Five,N
-106,1,"3,4",Musselburgh Private Nursery,11/05/2016,NA,CG,40,F,English,40,NA,90.8,P106Task2,NA,Three,N
-107,2,"3,4",Musselburgh Private Nursery,11/05/2016,NA,CG,44,F,English,42,NA,86.6,P107Task2,NA,Three,N
-108,3,"3,4",Musselburgh Private Nursery,11/05/2016,NA,CG,50,M,English,49,NA,95.1,P108Task2,NA,Four-Five,N
-109,1,"1,2",Musselburgh Private Nursery,11/05/2016,NA,CG,42,M,English,33,"DISCARD; speech and language problems; Trial 7, 8, 9 , Block 1 and Trial 8, 11, Block 2: distracted",73.1,P109Task1,NA,DISCARD,N
-110,2,"1,2",Musselburgh Private Nursery,11/05/2016,NA,CG,43,M,English,43,"2nd cal poor; Trial 14, Block 1 and Trial 10, Block 2: distracted",80.9,P110Task1,NA,Three,N
-111,3,"1,2",Musselburgh Private Nursery,11/05/2016,NA,CG,44,M,English,37,"Trial 2, Block 2: hands on eyes; Trial 6, 7 and 15, Block 2: distracted",83.2,P111Task1,NA,Three,N
-112,1,"3,4",Musselburgh Private Nursery,11/05/2016,NA,CG,35,M,English,26,"Trial 4,6,12, Block 1 and trial 14, Block 2: distracted",76.7,P112Task2,NA,Two,N
-113,2,"3,4",Lab,12/05/2016,NA,CG,47,M,English,39,1st and 2nd cal: missed one val point,89,P113Task2,NA,Three,Y
-114,3,"3,4",Lab,12/05/2016,NA,CG,47,F,English,67,"2nd cal poor; Trial 13, Block 2: distracted",78.4,P114Task2,NA,Three,N
-115,1,"1,2",Lab,12/05/2016,NA,CG,55,F,English,48,NA,88.8,P115Task1,NA,Four-Five,N
-116,2,"1,2",Bonnington House,13/05/2016,NA,CG,30,M,English,34,1st and 2nd cal poor;,88.6,P116Task1,NA,Two,N
-117,3,"1,2",Bonnington House,13/05/2016,NA,CG,32,F,English,26,1st and 2nd cal poor;,80.8,P117Task1,NA,Two,N
-118,1,"3,4",Bonnington House,13/05/2016,NA,CG,34,M,English,35,NA,83.4,P118Task2,NA,Two,Y
-119,2,"3,4",Bonnington House,13/05/2016,NA,CG,31,F,English,29,Right eye: strabismus; 2nd cal poor; head tilted to the right,61.1,P119Task2,USE LEFT EYE ONLY,Two,N
-120,3,"3,4",Bonnington House,13/05/2016,NA,CG,26,M,English,19,"Does not really listen; Trial 1, Block 1 and trial 8, 9, 10, 15, Block 2: speaks on top; Trial 4, 11, Block 1 and trial 6, Block 2: distracted",71.5,P120Task2,NA,Two,N
-121,1,"1,2",Bonnington House,13/05/2016,NA,CG,58,F,English,55,NA,91.7,P121Task1,NA,Four-Five,N
-122,2,"1,2",Bonnington House,13/05/2016,NA,CG,55,F,English,54,Does not understand experimenter's accent,90.7,P122Task1,NA,Four-Five,N
-123,3,"1,2",Bonnington House,13/05/2016,NA,CG,52,F,English,51,"Trial 6, Block 2: distracted",90.7,P123Task1,NA,Four-Five,N
-124,1,"3,4",Bonnington House,13/05/2016,NA,CG,57,M,English,66,NA,85.5,P124Task2,NA,Four-Five,N
-125,2,"3,4",Bonnington House,13/05/2016,NA,CG,53,M,"English, Spanish",51,NA,89.5,P125Task2,NA,Four-Five,N
-126,3,"3,4",Bonnington House,13/05/2016,NA,CG,39,M,English,48,2nd  cal poor,85.4,P126Task2,NA,Three,N
-127,1,"1,2",Bonnington House,13/05/2016,NA,CG,37,M,English,30,"Trial 6, Block 2: distracted",81.2,P127Task1,NA,Three,N
-128,2,"1,2",Arcadia,17/05/2016,NA,CG,29,F,English,33,Block 1 was not saved; Block 2 missing one trial,NA,P128Task1B2,NA,DISCARD,N
-129,3,"1,2",Arcadia,17/05/2016,NA,CG,28,M,"English, Cantonese",24,NA,94.37,P129Task1,NA,Two,N
-130,1,"3,4",Loretto,23/05/2016,NA,CG,56,F,English,75,1st cal: missed one val point; 2nd cal poor,86.51,P130Task2,NA,Four-Five,N
-131,2,"3,4",Loretto,23/05/2016,NA,CG,61,F,English,57,NA,91.85,P131Task2,NA,Four-Five,N
-132,3,"3,4",Loretto,23/05/2016,NA,CG,60,M,English,72,NA,90.67,P132Task2,NA,Four-Five,N
-133,1,"1,2",Arcadia,17/05/2016,NA,CG,27,F,"English, Mandarin",12,"Moves a lot; Trial 10, Block 1: distracted; Trial 2, 10, 15, Block 2: distracted",68.89,P133Task1,NA,Two,N
-134,2,"1,2",Arcadia,17/05/2016,NA,CG,34,F,English,29,2nd cal poor,71.99,P134Task1,NA,Two,Y
-135,3,"1,2",Arcadia,17/05/2016,NA,CG,29,F,English,32,"2nd cal poor; trial 7, 8, Block 2: distracted",81.19,P135Task1,NA,Two,N
-136,1,"3,4",St. Mary Leith,24/05/2016,NA,CG,56,M,English,61,"Trial 1, 8 in Block 2: distracted",77.94,P136Task2,NA,Four-Five,N
-137,2,"3,4",St. Mary Leith,24/05/2016,NA,CG,54,M,English,70,"Trial 11, Block 1: speaks on top of sentence",89.15,P137Task2,NA,Four-Five,N
-138,3,"3,4",St. Mary Leith,24/05/2016,NA,CG,61,F,English,46,NA,88.62,P138Task2,NA,Four-Five,N
-139,1,"1,2",Arcadia,17/05/2016,NA,CG,27,M,English,23,1st cal poor: 2nd cal: missed one val point,91.14,P139Task1,NA,Two,N
-140,2,"1,2",Arcadia,17/05/2016,NA,CG,29,F,"Polish, English",15,"1st and 2nd cal poor; Trial 12, Block 2: distracted; Trial 15, Block 2: hands on eyes",75.58,P140Task1,NA,Two,Y
-141,3,"1,2",Arcadia,17/05/2016,NA,CG,32,F,"English, German",22,1st cal: missed one val point,83.88,P141Task1,NA,Two,Y
-142,1,"3,4",St. Mary Leith,24/05/2016,NA,CG,60,F,English,49,NA,88.72,P142Task2,NA,Four-Five,N
-143,2,"3,4",Arcadia,17/05/2016,NA,CG,28,M,"Greek, English",25,"Trial 7, Block 2: distracted",75.45,P143Task2,NA,Two,Y
-144,3,"3,4",St. Mary Leith,24/05/2016,NA,CG,49,M,English,58,"1st cal poor; trial 12, Block 2: distracted",81.9,P144Task2,NA,Four-Five,Y
-145,1,"1,2",Loretto,23/05/2016,NA,CG,31,F,English,35,"1st cal: missed one val point; poor 2nd cal; trial 2, Block 2: points before end of sentence",90.52,P145Task1,NA,Two,N
-146,2,"1,2",Loretto,23/05/2016,NA,CG,27,F,English,35,"2nd cal poor; trial 4, 5 in Block 2: distracted",61.51,P146Task1,NA,Two,N
-147,3,"1,2",Loretto,23/05/2016,NA,CG,28,M,English,28,"1st cal: missed one val point; poor second cal; moves a lot; trial 12, Block 2: distracted",83.22,P147Task1,NA,Two,N
-148,1,"3,4",Loretto,23/05/2016,NA,CG,27,F,English,17,"Trial 1, Block 1 and trial 4, Block 2: distracted; Trial 7, Block 2: points before sentence end",80.01,P148Task2,NA,Two,N
-149,2,"3,4",Currie Playgroup,25/05/2016,NA,CG,29,M,English,32,First and second calibration poor,80.42,P149Task2,NA,Two,Y
-150,3,"3,4",Currie Playgroup,25/05/2016,NA,CG,34,F,English,29,First cal: missed one validation point,95.12,P150Task2,NA,Two,N
-151,1,"1,2",Currie Playgroup,25/05/2016,NA,CG,24,F,English,27,"First cal poor; moves a lot; Trial 8, Block 1 and Trial 11, Block 2: distracted; only points twice; the other responses are elicited with direct yes/no questions to which she answers verbally; NR means that she answered ""no"" to questions about all pictures; BPVS discontinued because of tiredness",54.92,P151Task1,NA,Two,N
-152,2,"1,2",Currie Playgroup,25/05/2016,NA,CG,33,M,English,14,"Second cal poor; trial 5 and 7, Block 1: distracted or speaks on top of sentence; Trial 9, Block 2: distracted",79.25,P152Task1,NA,Two,Y
-153,3,"1,2",Loretto,23/05/2016,NA,CG,44,F,English,38,"First cal poor; trial 10, Block 2: distracted",92.62,P153Task1,NA,Three,N
-154,1,"3,4",Seabeach,25/05/2016,NA,CG,34,F,English,39,First and second cal poor; never answers question,42.15,P154Task2,USE RIGHT EYE,Two,Y
-155,2,"3,4",Seabeach,25/05/2016,NA,CG,32,F,English,33,First cal poor,89.69,P155Task2,NA,Two,N
-156,3,"3,4",Seabeach,25/05/2016,NA,CG,33,M,English,23,NA,87.95,P156Task2,NA,Two,Y
-157,1,"1,2",Seabeach,25/05/2016,NA,CG,26,M,English,24,"First cal poor; Trial 6, 7, 15 in Block 1: points before end of sentence; Trial 1, 3 in Block 2: distracted",76.01,P157Task1,NA,Two,N
-158,2,"1,2",St. Mary Leith,24/05/2016,NA,CG,41,M,"English, Polish",37,NA,83.41,P158Task1,NA,Three,N
-159,3,"1,2",St. Mary Leith,24/05/2016,NA,CG,44,M,English,44,NA,97.61,P159Task1,NA,Three,Y
-160,1,"3,4",Seabeach,27/05/2016,NA,CG,33,M,English,53,First cal poor; second cal: missed one val point,87.62,P160Task2,NA,Two,Y
-161,2,"3,4",St. Mary Leith,24/05/2016,NA,CG,47,F,English,57,1st cal: missed one val point,82.67,P161Task2,NA,Three,Y
-162,3,"3,4",St. Mary Leith,24/05/2016,NA,CG,39,F,English,34,1st cal: missed one val point,86.09,P162Task2,NA,Three,N
-163,1,"1,2",Seabeach,27/05/2016,NA,CG,30,F,English,28,NA,86.3,P163Task1,NA,Two,N
-164,2,"1,2",St. Mary Leith,24/05/2016,NA,CG,44,F,English,62,"Second cal poor; Trial 9, Block 1: distracted",90.5,P164Task1,NA,Three,Y
-165,3,"1,2",St. Mary Leith,24/05/2016,NA,CG,45,M,English,60,"First and second cal poor; Trial 15, Block 1: distracted",84.34,P165Task1,NA,Three,Y
-166,1,"3,4",St. Mary Leith,24/05/2016,NA,CG,48,F,English,44,1st and 2nd cal poor,85.01,P166Task2,NA,Four-Five,N
-167,2,"3,4",St. Mary Leith,24/05/2016,NA,CG,51,F,English,40,NA,83.79,P167Task2,NA,Four-Five,N
-168,3,"3,4",Currie Playgroup,25/05/2016,NA,CG,45,M,English,42,NA,88.08,P168Task2,NA,Three,N
-169,1,"1,2",Currie Playgroup,25/05/2016,NA,CG,36,M,english,34,First cal: missed one validation point; 2nd calibration poor,91.66,P169Task1,NA,Three,N
-170,2,"1,2",Towerbank Primary,26/05/2016,NA,CG,51,F,English,52,Missed one validation point in first calibration,72.65,P170Task1,NA,Four-Five,N
-171,3,"1,2",Towerbank Primary,26/05/2016,NA,CG,62,F,English,58,NA,90.62,P171Task1,NA,Four-Five,N
-172,1,"3,4",Towerbank Primary,26/05/2016,NA,CG,62,F,English,72,NA,93.26,P172Task2,NA,Four-Five,N
-173,2,"3,4",Towerbank Primary,26/05/2016,NA,CG,62,M,English,57,NA,87.64,P173Task2,NA,Four-Five,N
-174,3,"3,4",Seabeach,25/05/2016,NA,CG,36,F,English,29,"Second cal poor; trial 12, Block 2: distracted",NA,P174Task2,DATA NOT SAVED,Three,N
-175,1,"1,2",Seabeach,27/05/2016,NA,CG,36,M,English,39,"First and second cal: missed one val point; Trial 10, Block 1: points before sentence ends",92.38,P175Task1,NA,Three,Y
-176,2,"1,2",Towerbank Primary,26/05/2016,NA,CG,53,M,English,53,NA,90.03,P176Task1,NA,Four-Five,N
-177,3,"1,2",Towerbank Primary,26/05/2016,NA,CG,58,F,English,79,"Trial 2, 4 in Block 2: distracted",90.65,P177Task1,NA,Four-Five,N
-178,1,"3,4",Pinocchio Lasswade,30/05/2016,NA,CG,57,F,English,62,NA,93.89,P178Task2bis,NA,Four-Five,N
-179,2,"3,4",Pinocchio Lasswade,30/05/2016,NA,CG,62,F,English,58,"Trial 13, Block 1: distracted",72.56,P179Task2,NA,Four-Five,N
-180,3,"3,4",Pinocchio Lasswade,30/05/2016,NA,CG,57,F,English,84,NA,90.07,P180Task2,NA,Four-Five,N
-181,1,"1,2",Honest Toun,01/06/2016,NA,CG,36,M,English,38,"Trial 13, Block 1: distracted",88.16,P181Task1bis,NA,Three,N
-182,2,"1,2",Pinocchio Lasswade,30/05/2016,NA,CG,55,M,English,50,NA,88.99,P182Task1,NA,Four-Five,N
-183,3,"1,2",Honest Toun,01/06/2016,NA,CG,62,M,English,71,"Trial 7, 8, and 13, Block 1: distracted or speaks on top",79.63,P183Task1,NA,Four-Five,N
-184,1,"3,4",Honest Toun,01/06/2016,NA,CG,65,M,English,56,NA,88.17,P184Task2,NA,Four-Five,N
-185,2,"3,4",Broxburn Wee gems,02/06/2016,NA,CG,48,F,English,37,"Trial 3, 10, Block 2: distracted",74.43,P185Task2,NA,Four-Five,N
-186,3,"3,4",Broxburn Wee gems,02/06/2016,NA,CG,48,F,English,31,"Trial 8, Block 2: distracted",88.08,P186Task2,NA,Four-Five,N
-187,1,"1,2",Broxburn Wee gems,02/06/2016,NA,CG,46,M,English,53,NA,92.29,P187Task1,NA,Three,N
-188,2,"1,2",Lab,03/06/2016,14:20,CG,49,M,English,42,"2nd cal: missed 2 val point; Trial 13, Block 2: distracted",85.44,P188Task1,NA,Four-Five,N
-189,3,"1,2",Lab,03/06/2016,15:45,CG,48,F,English,45,2nd cal poor,90.12,P189Task1,NA,Four-Five,N
-192,3,"3,4",Echline Primary,07/06/2016,NA,CG,49,M,English,56,NA,88.45,P192Task2,NA,Four-Five,Y
-193,1,"1,2",Broxburn Wee gems,02/06/2016,NA,CG,40,F,English,36,"Trial 6, Block 1: distracted",81.79,P193Task1,NA,Three,N
-198,3,"3,4",Echline Primary,07/06/2016,NA,CG,60,F,English,71,NA,88.71,P198Task2,NA,Four-Five,Y
-199,1,"1,2",Broxburn Wee gems,02/06/2016,NA,CG,41,M,English,49,"Trial 9, Block 1 and trial 4, Block 2: distracted; Trial 1, Block 2: speaks on top",76.65,P199Task1,NA,Three,N
-200,1,"1,2",Arcadia,27/05/2016,NA,CG,31,M,English,22,"1st cal poor; Trial 1, 11 in Block 1 and Trial 1, 15 in Block 2: distracted",47.86,P200Task1,NA,Two,Y
-201,2,"1,2",Arcadia,27/05/2016,NA,CG,31,F,English,20,"Trial 4, 6, 7, 11 in Block 1 and trial 7 in Block 2: distracted or speaks on top",60.37,P201Task1,NA,Two,Y
-202,3,"1,2",Arcadia,27/05/2016,NA,CG,25,F,English,28,1st and 2nd cal poor,76.85,P202Task1,NA,Two,Y
-203,1,"3,4",Honest Toun,01/06/2016,NA,CG,35,F,English,20,"1st cal poor; trial 11, Block 1: hands on eyes",70.53,P203Task2,NA,Two,N
-204,2,"3,4",Honest Toun,01/06/2016,NA,CG,26,M,English,21,"Trial 11, Block 1 and Trial 1, Block 2: distracted; Trial 12, Block 2: points before sentence ends",78.08,P204Task2,NA,Two,N
-205,3,"3,4",Honest Toun,01/06/2016,NA,CG,33,M,"English, French",29,1st cal: missed one val point,47.12,P205Task2,NA,Two,N
-206,1,"1,2",Honest Toun,01/06/2016,NA,CG,30,M,English,24,"2nd cal: missed one val point; trial 15, Block 2: distracted",89.9,P206Task1,NA,Two,N
-207,2,"1,2",Broxburn Wee gems,02/06/2016,NA,CG,34,M,English,33,"1st and 2nd cal poor; Trial 7, 12, 14, Block 2: distracted",81.14,P207Task1,NA,Two,N
-208,3,"1,2",Broxburn Wee gems,02/06/2016,NA,CG,34,M,"Polish, English",23,NA,91.97,P208Task1,NA,Two,N
-209,1,"3,4",Broxburn Wee gems,02/06/2016,NA,CG,31,M,English,24,"2nd cal poor; Trial 7, Block 1: points before sentence end; Trial 1, Block 2: points before sentence ends",76.33,P209Task2,NA,Two,N
-210,2,"3,4",Broxburn Wee gems,02/06/2016,NA,CG,28,M,English,17,1st cal: missed one val point; 2nd cal poor,90.93,P210Task2,NA,Two,N
-211,3,"3,4",Broxburn Wee gems,02/06/2016,NA,CG,25,M,English,12,"2nd cal poor; Trial 3, 4, 6, 15, Block 1: speaks on top; Trial 2, Block 2: distracted; Trial 4, 7, 8, Block 2: distracted",67.63,P211Task2,NA,Two,N
-212,1,"1,2",Broxburn Wee gems,02/06/2016,NA,CG,26,M,English,8,1st cal very poor; not sure he understands the task; almost never points,75.85,P212Task1,NA,Two,N
-213,2,"1,2",Pinocchio Lasswade,06/06/2016,NA,CG,33,M,English,21,"2nd cal poor; Trial 3, Block 1: points before sentence ends; trial 5, 7, Block 1: distracted; trial 14, Block 1: speaks on top; Trial 3, 6, Block 2: distracted",80.7,P213Task1,NA,Two,N
-214,3,"1,2",Pinocchio Lasswade,06/06/2016,NA,CG,24,M,English,17,"2nd cal poor; Trial 4, 8, 12, Block 1: distracted",82.08,P214Task1,NA,Two,N
-215,1,"3,4",Pinocchio Lasswade,06/06/2016,NA,CG,26,M,English,19,"1st cal poor; Trial 3, Block 1: points before sentence end; Trial 5, 9, 12, 13, Block 1: speaks on top",77.45,P215Task2,NA,Two,N
-216,2,"3,4",Pinocchio Lasswade,06/06/2016,NA,CG,32,M,English,21,2nd cal poor,66.3,P216Task2,NA,Two,N
-217,3,"3,4",Pinocchio Lasswade,06/06/2016,NA,CG,24,F,English,2,"1st cal: missed one val point; 2nd cal: poor; never points; Trial 10, Block 1: distracted",82.43,P217Task2,NA,Two,N
-300,1,"1,2",Broxburn Wee gems,02/06/2016,NA,CG,44,M,English,47,2nd cal: missed one val point,94.69,P300Task1,NA,Three,N
-301,2,"1,2",Broxburn Wee gems,02/06/2016,NA,CG,37,M,English,23,"1st and 2nd cal: missed one val point; Trial 4, 10, Block 1; Trial 8, Block 2: distracted",82.84,P301Task1,NA,Three,N
-302,3,"1,2",Broxburn Wee gems,02/06/2016,NA,CG,47,M,English,46,2nd cal poor,91.24,P302Task1,NA,Three,N
-304,1,"3,4",Broxburn Wee gems,02/06/2016,NA,CG,37,M,English,40,"Trial 5, 11, Block 2: distracted",80.2,P304Task2,NA,Three,N
-305,2,"3,4",Broxburn Wee gems,02/06/2016,NA,CG,36,M,English,34,"Trial 5, 7, Block 1 and Trial 4, Block 2: distracted",88.36,P305Task2,NA,Three,N
-306,3,"3,4",Echline Primary,07/06/2016,NA,CG,44,M,English,50,"Trial 13, Block 2: distracted",89.8,P306Task2,NA,Three,N
-400,1,"1,2",Echline Primary,07/06/2016,NA,CG,54,M,English,43,NA,86.69,P400Task1,NA,Four-Five,N
-401,2,"1,2",Echline Primary,07/06/2016,NA,CG,58,M,English,46,"Trial 5, Block 2: speaks on top",80.67,P401Task1,NA,Four-Five,Y
-402,3,"1,2",Echline Primary,07/06/2016,NA,CG,60,F,English,66,1st cal: missed one val point,95.93,P402Task1,NA,Four-Five,Y
-403,1,"3,4",Echline Primary,07/06/2016,NA,CG,56,M,English,66,Moves a lot,87.73,P403Task2,NA,Four-Five,N
-404,2,"3,4",Echline Primary,07/06/2016,NA,CG,51,M,English,57,NA,89.21,P404Task2,NA,Four-Five,Y
-405,3,"3,4",Echline Primary,07/06/2016,NA,CG,49,F,English,54,NA,87.75,P405Task2,NA,Four-Five,N
+"Numb","List","Task","Location","Date","Time","Exp","Age","Sex","Language","BPVS","Notes","TR","ETCODE","Consent","AGEYEAR","retest"
+1,1,"1,2","beafc41c","04/04/2016","09:20","CG",43,"F","English",28,NA,82.4,"P01Task1",NA,"Three","Y"
+2,2,"1,2","beafc41c","04/04/2016","09:50","CG",42,"F","English",40,NA,94.7,"P02Tas1",NA,"Three","Y"
+3,3,"1,2","beafc41c","04/04/2016","10:15","CG",46,"M","English",51,"Poor calibration in Block 1; gets distracted by moise on Trial 10 of Block 2",85.6,"P03Task1",NA,"Three","Y"
+4,1,"3,4","beafc41c","04/04/2016","10:40","CG",39,"M","English",35,"Poor calibration in Block 2",77.7,"P04Task2",NA,"Three","Y"
+5,2,"3,4","827da09c","05/04/2006",NA,"CG",26,"F","English",30,"Sometimes does not point; discontinued BPVS because of tiredness; gets distracted on trial 13 of block 2",72.7,"P05Task2",NA,"Two","N"
+6,3,"3,4","827da09c","05/04/2006",NA,"CG",34,"F","English",44,NA,78.3,"P06Task2",NA,"Two","N"
+7,1,"1,2","827da09c","05/04/2006",NA,"CG",35,"M","English",37,NA,79.2,"P07Task1",NA,"Two","N"
+8,2,"1,2","827da09c","05/04/2006",NA,"CG",30,"M","English",12,"Does not really understand task; rarely points to picture",85.7,"P08Task1",NA,"Two","N"
+9,3,"1,2","827da09c","05/04/2006",NA,"CG",36,"F","English",47,"Poor claibration before block 2",79.5,"P09Task1",NA,"Three","N"
+10,1,"3,4","827da09c","05/04/2006",NA,"CG",35,"F","English",30,"Very distracted, moves a lot, speaks over sentences; sometimes does not point; distracted on trials 6 and 14 of block1, 8 and 10 of block 2",48.7,"P10Task2",NA,"Two","N"
+11,2,"3,4","827da09c","05/04/2006",NA,"CG",24,"M","English",23,"Distarcted on trials 8 and 10 of block 1, 15 of block 2",85.8,"P11Task2",NA,"Two","N"
+12,3,"3,4","827da09c","05/04/2006",NA,"CG",32,"F","English",40,NA,84.5,"P12Task2",NA,"Two","N"
+13,1,"1,2","beafc41c","06/04/2016","12:35","CG",40,"F","English",31,"DISCARD: Speech delay but good comprehension; often moves, gets distracted before question",69.9,"P13Task1",NA,"DISCARD","N"
+14,2,"1,2","beafc41c","06/04/2016","13:00","CG",45,"F","English",19,"Trial 10, block2: distracted. Random responding in BPVS?",86.1,"P14Task1",NA,"Three","Y"
+15,3,"1,2","beafc41c","06/04/2016","13:20","CG",43,"M","English",40,"Moves a lot; distracted on trial 9 Block 1 and trial 12 block 2; moved on trial 10 block 2",88.8,"P15Task1",NA,"Three","Y"
+16,1,"3,4","beafc41c","06/04/2016","13:45","CG",47,"M","English",37,NA,84,"P16Task2",NA,"Three","N"
+17,2,"3,4","beafc41c","06/04/2016","14:10","CG",45,"M","English",55,NA,90.4,"P17Task2",NA,"Three","Y"
+18,3,"3,4","beafc41c","07/04/2016","12:40","CG",40,"F","English",33,"DISCARD; Very poor calibration; also distracted on trial 9, block 2",34.3,"P18Task2bis",NA,"DISCARD","N"
+19,1,"1,2","beafc41c","07/04/2016","13:00","CG",44,"F","English",41,"Poor first calibration",71.62,"P19Task1",NA,"Three","Y"
+20,2,"1,2","beafc41c","07/04/2016","13:30","CG",50,"F","English",48,NA,94.9,"P20Task1",NA,"Four-Five","N"
+21,3,"1,2","beafc41c","07/04/2016","14:00","CG",52,"M","English",69,NA,92,"P21Task1",NA,"Four-Five","N"
+22,1,"3,4","adf3f087","12/04/2016",NA,"CG",38,"M","English",30,"Poor first calibration",77.4,"P22Task2",NA,"Three","N"
+23,2,"3,4","adf3f087","12/04/2016",NA,"CG",51,"F","English",53,NA,75.4,"P23Task2",NA,"Four-Five","N"
+24,3,"3,4","adf3f087","12/04/2016",NA,"CG",41,"M","English",58,"Glasses: first and second calibration poor; moves about a lot",46.5,"P24Task2",NA,"Three","Y"
+25,1,"1,2","adf3f087","12/04/2016",NA,"CG",57,"M","English",44,NA,81.3,"P25Task1",NA,"Four-Five","N"
+26,2,"1,2","adf3f087","12/04/2016",NA,"CG",54,"F","English",55,NA,84.8,"P26Task1",NA,"Four-Five","N"
+27,3,"1,2","578c5baa","15/04/2016","09:30","CG",41,"M","English",30,"moves a lot",78.4,"P27Task1",NA,"Three","N"
+28,1,"3,4","578c5baa","15/04/2016","10:00","CG",48,"F","English",38,"Trial 1, Block 1; trial 8 and 9 Block 2: distracted",74,"P28Task2",NA,"Four-Five","N"
+29,2,"3,4","578c5baa","15/04/2016","10:30","CG",48,"F","English",52,NA,75.8,"P29Task2",NA,"Four-Five","N"
+30,3,"3,4","e8855d07","19/04/2016",NA,"CG",39,"M","English",32,NA,80.3,"P30Task2",NA,"Three","N"
+31,1,"1,2","e8855d07","19/04/2016",NA,"CG",50,"F","English",72,NA,84.8,"P31Task1",NA,"Four-Five","N"
+32,2,"1,2","e8855d07","19/04/2016",NA,"CG",37,"F","English",38,"Poor first calibration; Trial 1, Block 1:distracted",72.8,"P32Task1",NA,"Three","Y"
+33,3,"1,2","e8855d07","19/04/2016",NA,"CG",55,"F","English",82,"Second calibaration poor",83.5,"P33Task1",NA,"Four-Five","N"
+34,1,"3,4","e8855d07","19/04/2016",NA,"CG",43,"M","English",47,"Poor first calibration",58,"P34Task2",NA,"Three","N"
+35,2,"3,4","e8855d07","19/04/2016",NA,"CG",47,"M","English",54,NA,95.5,"P35Task2",NA,"Three","N"
+36,3,"3,4","e8855d07","19/04/2016",NA,"CG",48,"F","English",37,NA,82.3,"P36Task2",NA,"Four-Five","N"
+37,1,"1,2","2e2892aa","20/04/2016","11:15","CG",37,"F","English",38,"Trial 12, Block 2: distracted, moves",80.5,"P37Task1",NA,"Three","Y"
+38,2,"1,2","2e2892aa","20/04/2016","14:30","CG",54,"F","English",64,NA,79,"P38Task1",NA,"Four-Five","Y"
+39,3,"1,2","2e2892aa","20/04/2016","16:15","CG",54,"M","English",56,NA,80.6,"P39Task1",NA,"Four-Five","Y"
+40,1,"3,4","d4573987","25/04/2016",NA,"CG",51,"F","English",63,NA,86.5,"P40Task2",NA,"Four-Five","Y"
+41,2,"3,4","d4573987","25/04/2016",NA,"CG",43,"M","English",28,"Poor first calibration; Trial 8, Block 1 and Trial 8 Block 2: distracted",85.4,"P41Task2",NA,"Three","N"
+42,3,"3,4","d4573987","25/04/2016",NA,"CG",54,"F","English",34,"Poor first calibration (glasses);  Trial 1, Block 1 and Trial 11 and 13, Block 2: distracted",70.6,"P42Task2",NA,"Four-Five","N"
+43,1,"1,2","d4573987","25/04/2016",NA,"CG",50,"F","English",44,"Always points before question; Trial 15, Block 2: ended by mistake before question",75.5,"P43Task1",NA,"Four-Five","N"
+44,2,"1,2","d4573987","25/04/2016",NA,"CG",52,"F","English",66,NA,88.4,"P44Task1",NA,"Four-Five","N"
+45,3,"1,2","d4573987","25/04/2016",NA,"CG",54,"F","English",71,NA,89.6,"P45Task1",NA,"Four-Five","N"
+46,1,"3,4","d4573987","25/04/2016",NA,"CG",60,"M","English",93,"Trial 13, Block 2: distracted",85.7,"P46Task2",NA,"Four-Five","N"
+47,2,"3,4","d4573987","25/04/2016",NA,"CG",49,"F","English",60,NA,78,"P47Task2",NA,"Four-Five","N"
+48,3,"3,4","d4573987","25/04/2016",NA,"CG",32,"F","English",34,"Moves a lot",76.7,"P48Task2",NA,"Two","N"
+49,1,"1,2","d4573987","25/04/2016",NA,"CG",49,"M","English",55,NA,79.5,"P49Task1",NA,"Four-Five","N"
+50,2,"1,2","2e2892aa","26/04/2016","11:15","CG",38,"F","English,German, Spanish",54,"Poor second calibration; Trial 15, Block 1:distracted",84,"P50Task1",NA,"Three","Y"
+51,3,"1,2","2e2892aa","26/04/2016","13:15","CG",54,"M","English",57,NA,85.6,"P51Task1",NA,"Four-Five","N"
+52,1,"3,4","e8855d07","27/04/2016",NA,"CG",36,"M","English",29,"Trial 5, Block 1 and trial 12. Block 2: distracted",90.3,"P52Task2",NA,"Three","Y"
+53,2,"3,4","e8855d07","27/04/2016",NA,"CG",39,"F","English",26,"Poor 1st and 2nd calibration",77.9,"P53Task2",NA,"Three","N"
+54,3,"3,4","e8855d07","27/04/2016",NA,"CG",42,"F","English",32,"trial 7, Block 1: distracted",89.6,"P54Task2",NA,"Three","Y"
+55,1,"1,2","e8855d07","27/04/2016",NA,"CG",53,"F","English",55,NA,80.4,"P55Task1",NA,"Four-Five","N"
+56,2,"1,2","e8855d07","27/04/2016",NA,"CG",40,"F","English",31,NA,81.8,"P56Task1",NA,"Three","Y"
+57,3,"1,2","e8855d07","27/04/2016",NA,"CG",45,"M","English",47,"Trial 15, Block 1: distracted. Trial 13, Block 2: puts hands over eyes",75.3,"P57Task1",NA,"Three","N"
+58,1,"3,4","e8855d07","27/04/2016",NA,"CG",38,"M","English",26,"Poor second calibration; moves a lot",81.5,"P58Task2",NA,"Three","N"
+59,2,"3,4","2e2892aa","28/04/2016","10:20","CG",40,"M","English, Finnish",35,"Moves a lot",84,"P59Task2",NA,"Three","Y"
+60,3,"3,4","2e2892aa","28/04/2016","16:15","CG",44,"M","English",NA,"DISCARD: Does not follow task instructions and points to other pictures, not the one he is asked about",53.11,"P60Task2",NA,"DISCARD","N"
+61,1,"1,2","2e2892aa","29/04/2016","10:20","CG",56,"F","English",61,NA,84,"P61Task1bis",NA,"Four-Five","Y"
+62,2,"1,2","2e2892aa","02/05/2016","10:40","CG",46,"M","English",55,"Poor first calibration",82.2,"P62Task1",NA,"Three","Y"
+63,3,"1,2","2e2892aa","02/05/2016","15:45","CG",57,"M","English, German",42,"ONLY B1 and 4 trials from B2; experiment interrupted because of experimenter error",65.8,"P63Task1",NA,"DISCARD","N"
+64,1,"3,4","91219407","03/05/2016",NA,"CG",33,"F","English",32,"Trials 8, 13, B1: distracted",68,"P64Task2",NA,"Two","N"
+65,2,"3,4","91219407","03/05/2016",NA,"CG",27,"M","English",21,"Trials 7, 10, 11, 12, 13 in Block 1; Trials 1, 2, 3, 4 in Block 2: distracted or speaks over sentence; 1st and 2nd calibration poor; often does not point or points to the wrong picture",67.5,"P65Task2",NA,"Two","N"
+66,3,"3,4","91219407","03/05/2016",NA,"CG",27,"M","English",22,"Trials 6 and 10, Block 1; Trials 13 and 15, Block 2: distracted or points too ealry. 1st and 2nd calibrations poor; during 2nd block he is not paying much attention to the sentences",69.5,"P66Task2",NA,"Two","N"
+67,1,"1,2","3d74a631","04/05/2016",NA,"CG",60,"F","English",68,"Trials 2 and 4, Block 2: distracted; Poor second calibration; BPVS discontinued bo tiredness",65.8,"P67Task1",NA,"Four-Five","N"
+68,2,"1,2","3d74a631","04/05/2016",NA,"CG",49,"M","English",38,"Trial 5 and 15, Block 2: distracted",73.7,"P68Task1",NA,"Four-Five","N"
+69,3,"1,2","3d74a631","04/05/2016",NA,"CG",33,"F","English",21,"Poor first and second calibration",85.4,"P69Task1",NA,"Two","N"
+70,1,"3,4","3d74a631","04/05/2016",NA,"CG",40,"M","English",43,"Trials 5, 11, 15 Block 2: distracted; Poor first and second calibration",72.8,"P70Task2",NA,"Three","N"
+71,2,"3,4","3d74a631","04/05/2016",NA,"CG",40,"M","English",33,NA,93,"P71Task2",NA,"Three","N"
+72,3,"3,4","3d74a631","04/05/2016",NA,"CG",38,"M","English",52,"Trial 14, Block2: distracted; poor first calibration",74.1,"P72Task2",NA,"Three","N"
+73,1,"1,2","3d74a631","04/05/2016",NA,"CG",60,"F","English",48,"Trial 1, Block 1: distracted",77.5,"P73Task1",NA,"Four-Five","N"
+74,2,"1,2","3d74a631","04/05/2016",NA,"CG",54,"M","English",40,"Trial 1, Block 1: distracted; blinks a lot",70.3,"P74Task1",NA,"Four-Five","N"
+75,3,"1,2","3d74a631","04/05/2016",NA,"CG",32,"F","English",30,"Trials 8, 10 and 13, Block 2: distracted; poor first and second cal",36.6,"P75Task1",NA,"Two","N"
+76,1,"3,4","3d74a631","04/05/2016",NA,"CG",36,"F","English",35,"Trial 9 and 12, Block 1: distracted or speaks on top",81.2,"P76Task2",NA,"Three","N"
+77,2,"3,4","3d74a631","04/05/2016",NA,"CG",36,"F","English",27,"Trials 1, 3, 12, and 15, Block 1; Trial 8, Block 2: distracted; Poor second cal",72.1,"P77Task2",NA,"Three","N"
+78,3,"3,4","3d74a631","04/05/2016",NA,"CG",48,"M","English",45,"Poor first and second calibration",80.9,"P78Task2",NA,"Four-Five","N"
+79,1,"1,2","3d74a631","04/05/2016",NA,"CG",56,"M","English",63,"Poor second calibration",84.7,"P79Task1",NA,"Four-Five","N"
+80,2,"1,2","2e2892aa","05/05/2016","10:30","CG",44,"M","English",50,"Trial 14, Block 1: distracted; Poor first calibration",83.4,"P80Task1",NA,"Three","Y"
+81,3,"1,2","2e2892aa","05/05/2016","11:05","CG",44,"M","English",44,NA,86.4,"P81Task1",NA,"Three","Y"
+82,1,"3,4","2e2892aa","06/05/2016","11:35","AR",38,"F","English",34,NA,72.8,"P82",NA,"Three","N"
+83,2,"3,4","2e2892aa","07/05/2016","11:35","AR",42,"F","English",49,NA,73.4,"P83",NA,"Three","N"
+84,3,"3,4","2e2892aa","07/05/2016","11:55","AR",40,"M","English",39,NA,55.6,"P84",NA,"Three","Y"
+85,1,"1,2","2e2892aa","09/05/2016","09:45","CG",61,"M","English",68,NA,80.2,"P85Task1",NA,"DISCARD","Y"
+86,2,"1,2","2e2892aa","09/05/2016","10:15","CG",47,"M","English",48,NA,85.7,"P86Task1",NA,"Three","Y"
+87,3,"1,2","2e2892aa","09/05/2016",NA,"CG",47,"M","English",47,"Missed a point in 2nd cal; T11, Block 2: distracted",84.8,"P87Task1",NA,"Three","N"
+88,1,"3,4","2e2892aa","09/05/2016",NA,"CG",47,"F","English",52,"Moves a lot",73.3,"P88Task2",NA,"Three","N"
+89,2,"3,4","827da09c","10/05/2016",NA,"CG",48,"F","English",54,"Trial 6, Block 1: distracted",87.7,"P89Task2",NA,"Four-Five","N"
+90,3,"3,4","827da09c","10/05/2016",NA,"CG",44,"M","English",47,NA,92,"P90Task2",NA,"Three","Y"
+91,1,"1,2","827da09c","10/05/2016",NA,"CG",48,"F","English",58,"Trial 2, Block 2: distracted",88.4,"P91Task1",NA,"Four-Five","Y"
+92,2,"1,2","827da09c","10/05/2016",NA,"CG",44,"M","English",58,NA,91.1,"P92Task1",NA,"Three","Y"
+93,3,"1,2","827da09c","10/05/2016",NA,"CG",60,"F","English",43,"Trial 10 and 13, Block 1; Trial 13, Block 2",73.6,"P93Task1",NA,"Four-Five","N"
+94,1,"3,4","827da09c","10/05/2016",NA,"CG",50,"M","English",65,NA,87.6,"P94Task2",NA,"Four-Five","N"
+95,2,"3,4","827da09c","10/05/2016",NA,"CG",44,"F","English",31,NA,94,"P95Task2",NA,"Three","N"
+96,3,"3,4","827da09c","10/05/2016",NA,"CG",39,"F","English",32,"1st and 2nd cal poor; trial 4, block 1: speaks on top",86.5,"P96Task2",NA,"Three","N"
+97,1,"1,2","827da09c","10/05/2016",NA,"CG",38,"M","English, Gaelic",41,"2nd cal poor",84,"P97Task1",NA,"Three","N"
+98,2,"1,2","827da09c","10/05/2016",NA,"CG",49,"F","English",50,"Trial 9, Block 2: distracted",85.11,"P98Task1",NA,"Four-Five","N"
+99,3,"1,2","827da09c","10/05/2016",NA,"CG",37,"M","English",35,"1st and 2nd cal poor; Trial 9, Block 1: speaks on top; Trial 10, 15, Block 2: distracted",82.9,"P99Task1",NA,"Three","Y"
+100,1,"3,4","827da09c","10/05/2016",NA,"CG",37,"F","English",33,"Trial 11, 12, Block 1; Trial 11, Block 2: distracted",79.6,"P100Task2",NA,"Three","N"
+101,2,"3,4","827da09c","10/05/2016",NA,"CG",48,"M","English",43,"2nd cal poor",86.6,"P101Task2",NA,"Four-Five","N"
+102,3,"3,4","827da09c","10/05/2016",NA,"CG",48,"F","English",41,NA,78.3,"P102Task2",NA,"Four-Five","Y"
+103,1,"1,2","827da09c","10/05/2016",NA,"CG",41,"M","English",73,"BPVS on separate session (13/05/2016); 2nd cal poor; Trial 13, Block 2: distracted",78,"P103Task1",NA,"Three","N"
+104,2,"1,2","fbd9699c","11/05/2016",NA,"CG",35,"F","English, Flemish",30,NA,83.6,"P104Task1",NA,"Two","N"
+105,3,"1,2","fbd9699c","11/05/2016",NA,"CG",56,"F","English",56,"Trial 13, Block 1, Trial 10, Block 2: distracted",79.1,"P105Task1",NA,"Four-Five","N"
+106,1,"3,4","fbd9699c","11/05/2016",NA,"CG",40,"F","English",40,NA,90.8,"P106Task2",NA,"Three","N"
+107,2,"3,4","fbd9699c","11/05/2016",NA,"CG",44,"F","English",42,NA,86.6,"P107Task2",NA,"Three","N"
+108,3,"3,4","fbd9699c","11/05/2016",NA,"CG",50,"M","English",49,NA,95.1,"P108Task2",NA,"Four-Five","N"
+109,1,"1,2","fbd9699c","11/05/2016",NA,"CG",42,"M","English",33,"DISCARD; speech and language problems; Trial 7, 8, 9 , Block 1 and Trial 8, 11, Block 2: distracted",73.1,"P109Task1",NA,"DISCARD","N"
+110,2,"1,2","fbd9699c","11/05/2016",NA,"CG",43,"M","English",43,"2nd cal poor; Trial 14, Block 1 and Trial 10, Block 2: distracted",80.9,"P110Task1",NA,"Three","N"
+111,3,"1,2","fbd9699c","11/05/2016",NA,"CG",44,"M","English",37,"Trial 2, Block 2: hands on eyes; Trial 6, 7 and 15, Block 2: distracted",83.2,"P111Task1",NA,"Three","N"
+112,1,"3,4","fbd9699c","11/05/2016",NA,"CG",35,"M","English",26,"Trial 4,6,12, Block 1 and trial 14, Block 2: distracted",76.7,"P112Task2",NA,"Two","N"
+113,2,"3,4","2e2892aa","12/05/2016",NA,"CG",47,"M","English",39,"1st and 2nd cal: missed one val point",89,"P113Task2",NA,"Three","Y"
+114,3,"3,4","2e2892aa","12/05/2016",NA,"CG",47,"F","English",67,"2nd cal poor; Trial 13, Block 2: distracted",78.4,"P114Task2",NA,"Three","N"
+115,1,"1,2","2e2892aa","12/05/2016",NA,"CG",55,"F","English",48,NA,88.8,"P115Task1",NA,"Four-Five","N"
+116,2,"1,2","827da09c","13/05/2016",NA,"CG",30,"M","English",34,"1st and 2nd cal poor;",88.6,"P116Task1",NA,"Two","N"
+117,3,"1,2","827da09c","13/05/2016",NA,"CG",32,"F","English",26,"1st and 2nd cal poor;",80.8,"P117Task1",NA,"Two","N"
+118,1,"3,4","827da09c","13/05/2016",NA,"CG",34,"M","English",35,NA,83.4,"P118Task2",NA,"Two","Y"
+119,2,"3,4","827da09c","13/05/2016",NA,"CG",31,"F","English",29,"Right eye: strabismus; 2nd cal poor; head tilted to the right",61.1,"P119Task2","USE LEFT EYE ONLY","Two","N"
+120,3,"3,4","827da09c","13/05/2016",NA,"CG",26,"M","English",19,"Does not really listen; Trial 1, Block 1 and trial 8, 9, 10, 15, Block 2: speaks on top; Trial 4, 11, Block 1 and trial 6, Block 2: distracted",71.5,"P120Task2",NA,"Two","N"
+121,1,"1,2","827da09c","13/05/2016",NA,"CG",58,"F","English",55,NA,91.7,"P121Task1",NA,"Four-Five","N"
+122,2,"1,2","827da09c","13/05/2016",NA,"CG",55,"F","English",54,"Does not understand experimenter's accent",90.7,"P122Task1",NA,"Four-Five","N"
+123,3,"1,2","827da09c","13/05/2016",NA,"CG",52,"F","English",51,"Trial 6, Block 2: distracted",90.7,"P123Task1",NA,"Four-Five","N"
+124,1,"3,4","827da09c","13/05/2016",NA,"CG",57,"M","English",66,NA,85.5,"P124Task2",NA,"Four-Five","N"
+125,2,"3,4","827da09c","13/05/2016",NA,"CG",53,"M","English, Spanish",51,NA,89.5,"P125Task2",NA,"Four-Five","N"
+126,3,"3,4","827da09c","13/05/2016",NA,"CG",39,"M","English",48,"2nd  cal poor",85.4,"P126Task2",NA,"Three","N"
+127,1,"1,2","827da09c","13/05/2016",NA,"CG",37,"M","English",30,"Trial 6, Block 2: distracted",81.2,"P127Task1",NA,"Three","N"
+128,2,"1,2","12faf62a","17/05/2016",NA,"CG",29,"F","English",33,"Block 1 was not saved; Block 2 missing one trial",NA,"P128Task1B2",NA,"DISCARD","N"
+129,3,"1,2","12faf62a","17/05/2016",NA,"CG",28,"M","English, Cantonese",24,NA,94.37,"P129Task1",NA,"Two","N"
+130,1,"3,4","dd6100aa","23/05/2016",NA,"CG",56,"F","English",75,"1st cal: missed one val point; 2nd cal poor",86.51,"P130Task2",NA,"Four-Five","N"
+131,2,"3,4","dd6100aa","23/05/2016",NA,"CG",61,"F","English",57,NA,91.85,"P131Task2",NA,"Four-Five","N"
+132,3,"3,4","dd6100aa","23/05/2016",NA,"CG",60,"M","English",72,NA,90.67,"P132Task2",NA,"Four-Five","N"
+133,1,"1,2","12faf62a","17/05/2016",NA,"CG",27,"F","English, Mandarin",12,"Moves a lot; Trial 10, Block 1: distracted; Trial 2, 10, 15, Block 2: distracted",68.89,"P133Task1",NA,"Two","N"
+134,2,"1,2","12faf62a","17/05/2016",NA,"CG",34,"F","English",29,"2nd cal poor",71.99,"P134Task1",NA,"Two","Y"
+135,3,"1,2","12faf62a","17/05/2016",NA,"CG",29,"F","English",32,"2nd cal poor; trial 7, 8, Block 2: distracted",81.19,"P135Task1",NA,"Two","N"
+136,1,"3,4","78020bb1","24/05/2016",NA,"CG",56,"M","English",61,"Trial 1, 8 in Block 2: distracted",77.94,"P136Task2",NA,"Four-Five","N"
+137,2,"3,4","78020bb1","24/05/2016",NA,"CG",54,"M","English",70,"Trial 11, Block 1: speaks on top of sentence",89.15,"P137Task2",NA,"Four-Five","N"
+138,3,"3,4","78020bb1","24/05/2016",NA,"CG",61,"F","English",46,NA,88.62,"P138Task2",NA,"Four-Five","N"
+139,1,"1,2","12faf62a","17/05/2016",NA,"CG",27,"M","English",23,"1st cal poor: 2nd cal: missed one val point",91.14,"P139Task1",NA,"Two","N"
+140,2,"1,2","12faf62a","17/05/2016",NA,"CG",29,"F","Polish, English",15,"1st and 2nd cal poor; Trial 12, Block 2: distracted; Trial 15, Block 2: hands on eyes",75.58,"P140Task1",NA,"Two","Y"
+141,3,"1,2","12faf62a","17/05/2016",NA,"CG",32,"F","English, German",22,"1st cal: missed one val point",83.88,"P141Task1",NA,"Two","Y"
+142,1,"3,4","78020bb1","24/05/2016",NA,"CG",60,"F","English",49,NA,88.72,"P142Task2",NA,"Four-Five","N"
+143,2,"3,4","12faf62a","17/05/2016",NA,"CG",28,"M","Greek, English",25,"Trial 7, Block 2: distracted",75.45,"P143Task2",NA,"Two","Y"
+144,3,"3,4","78020bb1","24/05/2016",NA,"CG",49,"M","English",58,"1st cal poor; trial 12, Block 2: distracted",81.9,"P144Task2",NA,"Four-Five","Y"
+145,1,"1,2","dd6100aa","23/05/2016",NA,"CG",31,"F","English",35,"1st cal: missed one val point; poor 2nd cal; trial 2, Block 2: points before end of sentence",90.52,"P145Task1",NA,"Two","N"
+146,2,"1,2","dd6100aa","23/05/2016",NA,"CG",27,"F","English",35,"2nd cal poor; trial 4, 5 in Block 2: distracted",61.51,"P146Task1",NA,"Two","N"
+147,3,"1,2","dd6100aa","23/05/2016",NA,"CG",28,"M","English",28,"1st cal: missed one val point; poor second cal; moves a lot; trial 12, Block 2: distracted",83.22,"P147Task1",NA,"Two","N"
+148,1,"3,4","dd6100aa","23/05/2016",NA,"CG",27,"F","English",17,"Trial 1, Block 1 and trial 4, Block 2: distracted; Trial 7, Block 2: points before sentence end",80.01,"P148Task2",NA,"Two","N"
+149,2,"3,4","4de6561c","25/05/2016",NA,"CG",29,"M","English",32,"First and second calibration poor",80.42,"P149Task2",NA,"Two","Y"
+150,3,"3,4","4de6561c","25/05/2016",NA,"CG",34,"F","English",29,"First cal: missed one validation point",95.12,"P150Task2",NA,"Two","N"
+151,1,"1,2","4de6561c","25/05/2016",NA,"CG",24,"F","English",27,"First cal poor; moves a lot; Trial 8, Block 1 and Trial 11, Block 2: distracted; only points twice; the other responses are elicited with direct yes/no questions to which she answers verbally; NR means that she answered \"no\" to questions about all pictures; BPVS discontinued because of tiredness",54.92,"P151Task1",NA,"Two","N"
+152,2,"1,2","4de6561c","25/05/2016",NA,"CG",33,"M","English",14,"Second cal poor; trial 5 and 7, Block 1: distracted or speaks on top of sentence; Trial 9, Block 2: distracted",79.25,"P152Task1",NA,"Two","Y"
+153,3,"1,2","dd6100aa","23/05/2016",NA,"CG",44,"F","English",38,"First cal poor; trial 10, Block 2: distracted",92.62,"P153Task1",NA,"Three","N"
+154,1,"3,4","8b4b99b1","25/05/2016",NA,"CG",34,"F","English",39,"First and second cal poor; never answers question",42.15,"P154Task2","USE RIGHT EYE","Two","Y"
+155,2,"3,4","8b4b99b1","25/05/2016",NA,"CG",32,"F","English",33,"First cal poor",89.69,"P155Task2",NA,"Two","N"
+156,3,"3,4","8b4b99b1","25/05/2016",NA,"CG",33,"M","English",23,NA,87.95,"P156Task2",NA,"Two","Y"
+157,1,"1,2","8b4b99b1","25/05/2016",NA,"CG",26,"M","English",24,"First cal poor; Trial 6, 7, 15 in Block 1: points before end of sentence; Trial 1, 3 in Block 2: distracted",76.01,"P157Task1",NA,"Two","N"
+158,2,"1,2","78020bb1","24/05/2016",NA,"CG",41,"M","English, Polish",37,NA,83.41,"P158Task1",NA,"Three","N"
+159,3,"1,2","78020bb1","24/05/2016",NA,"CG",44,"M","English",44,NA,97.61,"P159Task1",NA,"Three","Y"
+160,1,"3,4","8b4b99b1","27/05/2016",NA,"CG",33,"M","English",53,"First cal poor; second cal: missed one val point",87.62,"P160Task2",NA,"Two","Y"
+161,2,"3,4","78020bb1","24/05/2016",NA,"CG",47,"F","English",57,"1st cal: missed one val point",82.67,"P161Task2",NA,"Three","Y"
+162,3,"3,4","78020bb1","24/05/2016",NA,"CG",39,"F","English",34,"1st cal: missed one val point",86.09,"P162Task2",NA,"Three","N"
+163,1,"1,2","8b4b99b1","27/05/2016",NA,"CG",30,"F","English",28,NA,86.3,"P163Task1",NA,"Two","N"
+164,2,"1,2","78020bb1","24/05/2016",NA,"CG",44,"F","English",62,"Second cal poor; Trial 9, Block 1: distracted",90.5,"P164Task1",NA,"Three","Y"
+165,3,"1,2","78020bb1","24/05/2016",NA,"CG",45,"M","English",60,"First and second cal poor; Trial 15, Block 1: distracted",84.34,"P165Task1",NA,"Three","Y"
+166,1,"3,4","78020bb1","24/05/2016",NA,"CG",48,"F","English",44,"1st and 2nd cal poor",85.01,"P166Task2",NA,"Four-Five","N"
+167,2,"3,4","78020bb1","24/05/2016",NA,"CG",51,"F","English",40,NA,83.79,"P167Task2",NA,"Four-Five","N"
+168,3,"3,4","4de6561c","25/05/2016",NA,"CG",45,"M","English",42,NA,88.08,"P168Task2",NA,"Three","N"
+169,1,"1,2","4de6561c","25/05/2016",NA,"CG",36,"M","english",34,"First cal: missed one validation point; 2nd calibration poor",91.66,"P169Task1",NA,"Three","N"
+170,2,"1,2","44d06f31","26/05/2016",NA,"CG",51,"F","English",52,"Missed one validation point in first calibration",72.65,"P170Task1",NA,"Four-Five","N"
+171,3,"1,2","44d06f31","26/05/2016",NA,"CG",62,"F","English",58,NA,90.62,"P171Task1",NA,"Four-Five","N"
+172,1,"3,4","44d06f31","26/05/2016",NA,"CG",62,"F","English",72,NA,93.26,"P172Task2",NA,"Four-Five","N"
+173,2,"3,4","44d06f31","26/05/2016",NA,"CG",62,"M","English",57,NA,87.64,"P173Task2",NA,"Four-Five","N"
+174,3,"3,4","8b4b99b1","25/05/2016",NA,"CG",36,"F","English",29,"Second cal poor; trial 12, Block 2: distracted",NA,"P174Task2","DATA NOT SAVED","Three","N"
+175,1,"1,2","8b4b99b1","27/05/2016",NA,"CG",36,"M","English",39,"First and second cal: missed one val point; Trial 10, Block 1: points before sentence ends",92.38,"P175Task1",NA,"Three","Y"
+176,2,"1,2","44d06f31","26/05/2016",NA,"CG",53,"M","English",53,NA,90.03,"P176Task1",NA,"Four-Five","N"
+177,3,"1,2","44d06f31","26/05/2016",NA,"CG",58,"F","English",79,"Trial 2, 4 in Block 2: distracted",90.65,"P177Task1",NA,"Four-Five","N"
+178,1,"3,4","1bcccf07","30/05/2016",NA,"CG",57,"F","English",62,NA,93.89,"P178Task2bis",NA,"Four-Five","N"
+179,2,"3,4","1bcccf07","30/05/2016",NA,"CG",62,"F","English",58,"Trial 13, Block 1: distracted",72.56,"P179Task2",NA,"Four-Five","N"
+180,3,"3,4","1bcccf07","30/05/2016",NA,"CG",57,"F","English",84,NA,90.07,"P180Task2",NA,"Four-Five","N"
+181,1,"1,2","01a6c2b1","01/06/2016",NA,"CG",36,"M","English",38,"Trial 13, Block 1: distracted",88.16,"P181Task1bis",NA,"Three","N"
+182,2,"1,2","1bcccf07","30/05/2016",NA,"CG",55,"M","English",50,NA,88.99,"P182Task1",NA,"Four-Five","N"
+183,3,"1,2","01a6c2b1","01/06/2016",NA,"CG",62,"M","English",71,"Trial 7, 8, and 13, Block 1: distracted or speaks on top",79.63,"P183Task1",NA,"Four-Five","N"
+184,1,"3,4","01a6c2b1","01/06/2016",NA,"CG",65,"M","English",56,NA,88.17,"P184Task2",NA,"Four-Five","N"
+185,2,"3,4","91219407","02/06/2016",NA,"CG",48,"F","English",37,"Trial 3, 10, Block 2: distracted",74.43,"P185Task2",NA,"Four-Five","N"
+186,3,"3,4","91219407","02/06/2016",NA,"CG",48,"F","English",31,"Trial 8, Block 2: distracted",88.08,"P186Task2",NA,"Four-Five","N"
+187,1,"1,2","91219407","02/06/2016",NA,"CG",46,"M","English",53,NA,92.29,"P187Task1",NA,"Three","N"
+188,2,"1,2","2e2892aa","03/06/2016","14:20","CG",49,"M","English",42,"2nd cal: missed 2 val point; Trial 13, Block 2: distracted",85.44,"P188Task1",NA,"Four-Five","N"
+189,3,"1,2","2e2892aa","03/06/2016","15:45","CG",48,"F","English",45,"2nd cal poor",90.12,"P189Task1",NA,"Four-Five","N"
+192,3,"3,4","6b5e3f2a","07/06/2016",NA,"CG",49,"M","English",56,NA,88.45,"P192Task2",NA,"Four-Five","Y"
+193,1,"1,2","91219407","02/06/2016",NA,"CG",40,"F","English",36,"Trial 6, Block 1: distracted",81.79,"P193Task1",NA,"Three","N"
+198,3,"3,4","6b5e3f2a","07/06/2016",NA,"CG",60,"F","English",71,NA,88.71,"P198Task2",NA,"Four-Five","Y"
+199,1,"1,2","91219407","02/06/2016",NA,"CG",41,"M","English",49,"Trial 9, Block 1 and trial 4, Block 2: distracted; Trial 1, Block 2: speaks on top",76.65,"P199Task1",NA,"Three","N"
+200,1,"1,2","12faf62a","27/05/2016",NA,"CG",31,"M","English",22,"1st cal poor; Trial 1, 11 in Block 1 and Trial 1, 15 in Block 2: distracted",47.86,"P200Task1",NA,"Two","Y"
+201,2,"1,2","12faf62a","27/05/2016",NA,"CG",31,"F","English",20,"Trial 4, 6, 7, 11 in Block 1 and trial 7 in Block 2: distracted or speaks on top",60.37,"P201Task1",NA,"Two","Y"
+202,3,"1,2","12faf62a","27/05/2016",NA,"CG",25,"F","English",28,"1st and 2nd cal poor",76.85,"P202Task1",NA,"Two","Y"
+203,1,"3,4","01a6c2b1","01/06/2016",NA,"CG",35,"F","English",20,"1st cal poor; trial 11, Block 1: hands on eyes",70.53,"P203Task2",NA,"Two","N"
+204,2,"3,4","01a6c2b1","01/06/2016",NA,"CG",26,"M","English",21,"Trial 11, Block 1 and Trial 1, Block 2: distracted; Trial 12, Block 2: points before sentence ends",78.08,"P204Task2",NA,"Two","N"
+205,3,"3,4","01a6c2b1","01/06/2016",NA,"CG",33,"M","English, French",29,"1st cal: missed one val point",47.12,"P205Task2",NA,"Two","N"
+206,1,"1,2","01a6c2b1","01/06/2016",NA,"CG",30,"M","English",24,"2nd cal: missed one val point; trial 15, Block 2: distracted",89.9,"P206Task1",NA,"Two","N"
+207,2,"1,2","91219407","02/06/2016",NA,"CG",34,"M","English",33,"1st and 2nd cal poor; Trial 7, 12, 14, Block 2: distracted",81.14,"P207Task1",NA,"Two","N"
+208,3,"1,2","91219407","02/06/2016",NA,"CG",34,"M","Polish, English",23,NA,91.97,"P208Task1",NA,"Two","N"
+209,1,"3,4","91219407","02/06/2016",NA,"CG",31,"M","English",24,"2nd cal poor; Trial 7, Block 1: points before sentence end; Trial 1, Block 2: points before sentence ends",76.33,"P209Task2",NA,"Two","N"
+210,2,"3,4","91219407","02/06/2016",NA,"CG",28,"M","English",17,"1st cal: missed one val point; 2nd cal poor",90.93,"P210Task2",NA,"Two","N"
+211,3,"3,4","91219407","02/06/2016",NA,"CG",25,"M","English",12,"2nd cal poor; Trial 3, 4, 6, 15, Block 1: speaks on top; Trial 2, Block 2: distracted; Trial 4, 7, 8, Block 2: distracted",67.63,"P211Task2",NA,"Two","N"
+212,1,"1,2","91219407","02/06/2016",NA,"CG",26,"M","English",8,"1st cal very poor; not sure he understands the task; almost never points",75.85,"P212Task1",NA,"Two","N"
+213,2,"1,2","1bcccf07","06/06/2016",NA,"CG",33,"M","English",21,"2nd cal poor; Trial 3, Block 1: points before sentence ends; trial 5, 7, Block 1: distracted; trial 14, Block 1: speaks on top; Trial 3, 6, Block 2: distracted",80.7,"P213Task1",NA,"Two","N"
+214,3,"1,2","1bcccf07","06/06/2016",NA,"CG",24,"M","English",17,"2nd cal poor; Trial 4, 8, 12, Block 1: distracted",82.08,"P214Task1",NA,"Two","N"
+215,1,"3,4","1bcccf07","06/06/2016",NA,"CG",26,"M","English",19,"1st cal poor; Trial 3, Block 1: points before sentence end; Trial 5, 9, 12, 13, Block 1: speaks on top",77.45,"P215Task2",NA,"Two","N"
+216,2,"3,4","1bcccf07","06/06/2016",NA,"CG",32,"M","English",21,"2nd cal poor",66.3,"P216Task2",NA,"Two","N"
+217,3,"3,4","1bcccf07","06/06/2016",NA,"CG",24,"F","English",2,"1st cal: missed one val point; 2nd cal: poor; never points; Trial 10, Block 1: distracted",82.43,"P217Task2",NA,"Two","N"
+300,1,"1,2","91219407","02/06/2016",NA,"CG",44,"M","English",47,"2nd cal: missed one val point",94.69,"P300Task1",NA,"Three","N"
+301,2,"1,2","91219407","02/06/2016",NA,"CG",37,"M","English",23,"1st and 2nd cal: missed one val point; Trial 4, 10, Block 1; Trial 8, Block 2: distracted",82.84,"P301Task1",NA,"Three","N"
+302,3,"1,2","91219407","02/06/2016",NA,"CG",47,"M","English",46,"2nd cal poor",91.24,"P302Task1",NA,"Three","N"
+304,1,"3,4","91219407","02/06/2016",NA,"CG",37,"M","English",40,"Trial 5, 11, Block 2: distracted",80.2,"P304Task2",NA,"Three","N"
+305,2,"3,4","91219407","02/06/2016",NA,"CG",36,"M","English",34,"Trial 5, 7, Block 1 and Trial 4, Block 2: distracted",88.36,"P305Task2",NA,"Three","N"
+306,3,"3,4","6b5e3f2a","07/06/2016",NA,"CG",44,"M","English",50,"Trial 13, Block 2: distracted",89.8,"P306Task2",NA,"Three","N"
+400,1,"1,2","6b5e3f2a","07/06/2016",NA,"CG",54,"M","English",43,NA,86.69,"P400Task1",NA,"Four-Five","N"
+401,2,"1,2","6b5e3f2a","07/06/2016",NA,"CG",58,"M","English",46,"Trial 5, Block 2: speaks on top",80.67,"P401Task1",NA,"Four-Five","Y"
+402,3,"1,2","6b5e3f2a","07/06/2016",NA,"CG",60,"F","English",66,"1st cal: missed one val point",95.93,"P402Task1",NA,"Four-Five","Y"
+403,1,"3,4","6b5e3f2a","07/06/2016",NA,"CG",56,"M","English",66,"Moves a lot",87.73,"P403Task2",NA,"Four-Five","N"
+404,2,"3,4","6b5e3f2a","07/06/2016",NA,"CG",51,"M","English",57,NA,89.21,"P404Task2",NA,"Four-Five","Y"
+405,3,"3,4","6b5e3f2a","07/06/2016",NA,"CG",49,"F","English",54,NA,87.75,"P405Task2",NA,"Four-Five","N"

@@ -227,7 +227,7 @@ print(elog_diff_CI_pred_comb)
 raw_comb<-ggarrange(propABC_loess_pred_age2,propABC_loess_pred_voc2,ncol=1,labels=c("A", "B"),common.legend = T, legend="bottom")
 all_comb<-ggarrange(raw_comb,elog_diff_CI_pred_comb,ncol=1,heights=c(2,1),labels=c("","C"))
 print(all_comb)
-ggsave("growthcurve.CI_pred_children_elog_raw.png", plot=all_comb, width=15, height=45, unit="cm", dpi=300, path=getwd())
+ggsave("growthcurve.CI_pred_children_elog_raw.pdf", device = "pdf",plot=all_comb, width=18, height=54, unit="cm", dpi=600, path=getwd())
 dev.off()
 
 ## These graphs are shown in Figure S2, section 4.1 of the Supplement
@@ -336,11 +336,11 @@ gca$Participant<-as.factor(gca$Participant)
 gca<-gca[,-9]
 
 ## C-biasing model
-mdiffCBA.AV<-lmer(Elog~1+(t1+t2)*(BD1+BD2)*(AC+VC)+t1*(1+t1+t2|Participant)+(1+t1+t2|Participant:BD1)+(1+t1+t2|Participant:BD2),data=subset(gca,Contrast=="CBA-FLAT"),REML=F)
+mdiffCBA.AV<-lmer(Elog~1+(t1+t2)*(BD1+BD2)*(AC+VC)+t1*(1+t1+t2|Participant)+(1+t1+t2|Participant:BD1)+(1+t1+t2|Participant:BD2),data=subset(gca,Contrast=="CBA"),REML=F)
 summary(mdiffCBA.AV)
 confint(mdiffCBA.AV, method="Wald")
 ## A-biasing model
-mdiffABC.AV<-lmer(Elog~1+(t1+t2)*(BD1+BD2)*(AC+VC)+(1+t1+t2|Participant)+(1+t1+t2|Participant:BD1)+(1+t1+t2|Participant:BD2),data=subset(gca,Contrast=="ABC-FLAT"),REML=F)
+mdiffABC.AV<-lmer(Elog~1+(t1+t2)*(BD1+BD2)*(AC+VC)+(1+t1+t2|Participant)+(1+t1+t2|Participant:BD1)+(1+t1+t2|Participant:BD2),data=subset(gca,Contrast=="ABC"),REML=F)
 summary(mdiffABC.AV)
 confint(mdiffABC.AV,method="Wald")
  
@@ -371,7 +371,7 @@ diff.I<-reshape(diff.I,varying=names(diff.I)[3:8],direction="long")
 names(diff.I)[3]<-"Contrast"
 names(diff.I)[4:6]<-c("Picture.A","Picture.B","Picture.C")
 diff.I<-diff.I[,-7]
-diff.I<-reshape(diff.I,varying=names(diff)[4:6],direction="long")
+diff.I<-reshape(diff.I,varying=names(diff.I)[4:6],direction="long")
 
 #analyze
 gca<-diff.I
@@ -485,10 +485,53 @@ ggsave("pred_pred_dispref_raw_all_crosssect.png", plot=pred_pred_dispref_raw_all
 
 ### Setup
 ```{r setup rev}
+##### SELECTION FOR RECOGNITION ANALYSES
+##### 100 ms post Noun Onset to 1000 ms post Noun Offset (i.e., post TotDur)
+
+# make sure you are summing over only those fixations that either were ongoing at NO + 100 or started after
+# and either where ongoing at TotDur + 1000 ms or ended before TotDur + 1000 ms
+al$FIXPOSTDO2<-as.character(al$AOIName)
+al$FIXPOSTDO2[(al$FixationStart<(al$TargetOnset+100) & al$FixationEnd< (al$TargetOnset+100))]<-"NOHIT"
+al$FIXPOSTDO2[(al$FixationStart>(al$TotDur+1000)&al$FixationEnd>(al$TotDur+1000))]<-"NOHIT"
+
+# now compute duration of the fix within the time window
+al$DURPOSTDO2<-al$FixationDuration
+al$DURPOSTDO2[al$FIXPOSTDO2=="NOHIT"]<-NA
+# this is for fixations that start before TargetOnset +100
+al$DURPOSTDO2[is.na(al$DURPOSTDO2)==F&al$FixationStart<(al$TargetOnset+100)]<-al$DURPOSTDO2[is.na(al$DURPOSTDO2)==F&al$FixationStart<(al$TargetOnset+100)]-(al$TargetOnset[is.na(al$DURPOSTDO2)==F&al$FixationStart<(al$TargetOnset+100)]+100-al$FixationStart[is.na(al$DURPOSTDO2)==F&al$FixationStart<(al$TargetOnset+100)])
+# this is for fixations that end after TotDur + 1000 ms
+al$DURPOSTDO2[is.na(al$DURPOSTDO2)==F&al$FixationEnd>(al$TotDur+1000)]<-al$DURPOSTDO2[is.na(al$DURPOSTDO2)==F&al$FixationEnd>(al$TotDur+1000)]-(al$FixationEnd[is.na(al$DURPOSTDO2)==F&al$FixationEnd>(al$TotDur+1000)]-(al$TotDur[is.na(al$DURPOSTDO2)==F&al$FixationEnd>(al$TotDur+1000)]+1000))
+
+# now discard fixations for which DURPOSTDO2 == NA
+alD2<-al[is.na(al$DURPOSTDO2)==F,]
+# this is to avoid NA
+
+fixsumDT2<-summaryBy(DURPOSTDO2~Participant + Trial + Bias+Named + ItemF+TargetOnset+TotDur+AGEYEAR,data=alD2, FUN=sum, keep.names=T)
+summary(fixsumDT2$DURPOSTDO2)
+
+## now calculate as a proportion of the total duration of the time window
+fixsumDT2$Perc_Dur<-fixsumDT2$DURPOSTDO2*100/(fixsumDT2$TotDur+1000-(fixsumDT2$TargetOnset+100))
+summary(fixsumDT2)
+fixsumDT2$DiscardTrial<-0
+fixsumDT2$DiscardTrial[fixsumDT2$Perc_Dur<40]<-1
+fixsumDT2$DiscardTrial[fixsumDT2$DiscardTrial>1]<-1
+
+## now average by subject and condition
+# this gives the proportion of discarded trials oer subject and condition out of the total number of trials for that participant
+discardbySubj2<-summaryBy(DiscardTrial ~ Participant + Bias+Named+AGEYEAR,data=fixsumDT2, FUN=mean,keep.names=T)
+write.table(discardbySubj2, "discarded_trials_recognition_children.txt")
+
+# total number of trials contributing per Subject and Condition
+fixsumDT2bis<-fixsumDT2[fixsumDT2$DiscardTrial==0,]
+## note that if a condition is missing for a subject in this summary it's because the subject contributed 0 trials to that condition after removing
+keptbySubj2<-summaryBy(DiscardTrial ~ Participant + Bias+Named+AGEYEAR,data=fixsumDT2bis, FUN=length,keep.names=T)
+write.table(keptbySubj2,"valid_trials_recognition_children.txt")
+
+
 ## Fixation proportions
 alr<-al
 # The recognition window spans from Noun Onset + 100 to TotDur+1000
-mean(time$TotDur-time$TargetOnset)*1000 # average duration of final word
+#mean(time$TotDur-time$TargetOnset)*1000 # average duration of final word
 alr$FIXATONSET<-as.character(alr$FixLoc)
 alr$FIXATONSET[(alr$FixationStart<alr$TargetOnset&alr$FixationEnd<alr$TargetOnset)]<-"NOHIT"
 alr$FIXATONSET[(alr$FixationStart>(alr$TargetOnset+100)&alr$FixationEnd>(alr$TargetOnset+100))]<-"NOHIT"
@@ -522,6 +565,7 @@ alr.l$BFIXBIN[is.na(alr.l$value)==F&alr.l$value=="B"]<-1
 alr.l$CFIXBIN[is.na(alr.l$value)==F&alr.l$value=="C"]<-1
 alr.l$BackgroundFIXBIN[is.na(alr.l$value)==F&alr.l$value=="Background"]<-1
 alr.l$time<-as.numeric(as.character(alr.l$variable))
+
 alr.lD<-alr.l[is.na(alr.l$DURPOSTDO2)==F,]
 
 fixsumbin2<-summaryBy(AFIXBIN + BFIXBIN + CFIXBIN + BackgroundFIXBIN + DURPOSTDO2+DISCARDBONSET+DISCARDAONSET+DISCARDCONSET ~ time + Participant + Trial + ItemF+ Named+Bias+Block+TargetOnset+TotDur+Age+BPVS+AGEYEAR, data=alr.lD, FUN = sum, keep.names=T, na.rm=T)
@@ -633,6 +677,8 @@ rec_cost_CI_comb_voc<-ggplot(fixpropbinB_pred2.CI2,aes(x=time,y=BFIXBIN.mean,sha
 rec_prop_comb<-ggarrange(rec_cost_CI_comb_age,rec_cost_CI_comb_voc,labels=c("A", "B"),common.legend = T, legend="bottom")
 
 # Time to first fixation (Panel C)
+tff.rs.m.B$Context<-"Biasing"
+tff.rs.m.B$Context[tff.rs.m.B$Bias=="FLAT"]<-"Neutral"
 tff.rs.m.B.CI<-summaryBy(FixStartRel~Participant+Context,data=tff.rs.m.B,FUN=c(mean), keep.names=T)
 tff.rs.m.B.CI<-summaryBy(FixStartRel~Context,data=tff.rs.m.B,FUN=c(mean,ci.low,ci.high))
 tff.barplot<-ggplot(tff.rs.m.B.CI,aes(y=FixStartRel.mean,x=Context,shape=Context, col=Context))+geom_pointrange(aes(y=FixStartRel.mean,ymin=FixStartRel.mean-FixStartRel.ci.low,ymax=FixStartRel.mean+FixStartRel.ci.high),size=2)+ylab("Time to first fixation (ms)")+theme(legend.position = "none")+scale_color_colorblind(2)                        
@@ -640,7 +686,7 @@ tff.barplot<-ggplot(tff.rs.m.B.CI,aes(y=FixStartRel.mean,x=Context,shape=Context
 # Combine panels A, B, C 
 rec_cost_all<-ggarrange(rec_prop_comb,tff.barplot,ncol=2,widths = c(2,1),labels=c("","C"))
 print(rec_cost_all)
-ggsave("CI_reccost_children_prop_tff.png", plot=rec_cost_all, width=45, height=15, unit="cm", dpi=300, path=getwd())
+ggsave("CI_reccost_children_prop_tff.pdf", device="pdf", plot=rec_cost_all, width=45, height=15, unit="cm", dpi=600, path=getwd())
 ```
 
 ### Analysis
@@ -679,6 +725,8 @@ anova(ttf.lmer.reccost.AV,ttf.lmer.reccost.V)#1.045      2      0.593
 
 ### Relation between revision skill, vocabulary size and age
 ```{r rev correlations}
+predictReuter <- data.frame(Participant = spwa.subj.w$Participant, PredR= rowMeans(spwa.subj.w[,c("BFIXBIN.ABC","BFIXBIN.CBA")]))
+
 # Compute the revision skill measure (following Reuter et al., 2019, Dev Psych)
 # Proportion of looks to B pictures when B was the named picture, and the context was Predictive (A-biasing or C-biasing), regardless of initial looks
 # Still excluding looks to Background
@@ -761,7 +809,7 @@ tff.rs.m.FLATABC.bysubj<-summaryBy(FixStartRel~Participant+Age+BPVS,data=tff.rs.
 ```{r an proc_speed}
 tff_raw<-read.table("https://raw.githubusercontent.com/chiara-gambi/gradedpred/master/phase1/raw_tff_recspeedindeces.txt",header=T)
 names(tff_raw)[4]<-"tff_raw"
-all<-merge(all,tff_model,by=c("Participant"),sort=F)
+all<-merge(all,tff_raw,by=c("Participant","Age","BPVS"),sort=F)
 # Correlations
 cor.test(all$tff_raw, all$Age) #-0.2965319, t = -4.5316, df = 213, p-value = 9.755e-06
 cor.test(all$tff_raw, all$BPVS) #-0.2942354  , t = -4.4931, df = 213, p-value = 1.151e-05
@@ -775,14 +823,22 @@ anova(tff_rawR1,tff_rawR2)
 ```{r graph proc_speed}
 #Figure 4C, main text
 rec_raw_allc<-ggplot(all,aes(tff_raw,BPVS))+geom_point()+geom_smooth(method="lm",col="violet")+ylab("Vocabulary Size (raw BPVS score)")+xlab("Time to first fixation (Processing Speed)")
+
+#Figure 4, main text
+library(ggpubr)
+pred_rec_predrev_raw_allc<-ggarrange(pred_raw_allc,predrev_raw_allc,rec_raw_allc,labels = c("A","B","C"), nrow=1)
+print(pred_rec_predrev_raw_allc)
+ggsave("rec_pred_predrev_raw_all_crosssect.pdf", device="pdf",plot=pred_rec_predrev_raw_allc, width=45, height=15, unit="cm", dpi=600, path=getwd())
+
 ```
+
 
 # Longitudinal Analyses {.tabset .tabset-fade}
 
 ## Setup
 ```{r setup long}
 # This data file contains information on the longitudinal sample
-data<-read.csv("https://raw.githubusercontent.com/chiara-gambi/gradedpred/master/phase2/longitudinal_part_info.csv",header=T)
+data<-read.csv("https://raw.githubusercontent.com/chiara-gambi/gradedpred/master/phase2/long_part_info.csv",header=T)
 # Note that it contains 56 rows, but eye-tracking data from one participant are missing, so in effect it is 55 participants
 data55<-data[data$Eyetrack_data=="Y",]
 # combine with the eye-tracking indeces
@@ -806,7 +862,7 @@ rec_raw_all<-ggplot(data.wi,aes(tff_raw,LanCh))+geom_point()+geom_smooth(method=
 
 # Combine the panels
 pred_rec_predrev_raw_all<-ggarrange(pred_raw_all,predrev_raw_all,rec_raw_all,labels = c("A","B","C"), nrow=1)
-ggsave("rec_pred_predrev_raw_all.png", plot=pred_rec_predrev_raw_all, width=45, height=15, unit="cm", dpi=300, path=getwd())
+ggsave("rec_pred_predrev_raw_all.pdf", device="pdf", plot=pred_rec_predrev_raw_all, width=45, height=15, unit="cm", dpi=600, path=getwd())
 
 # Figure S6, Section 7, Supplement
 # Panel A, preference
@@ -883,7 +939,7 @@ library(yhat)
 data.wi$scaleP<-scale(data.wi$PrecC_raw,T,T)
 data.wi$scaleS<-scale(data.wi$tff_raw,T,T)
 data.wi$centerV1<-scale(data.wi$RawBPVSScore1,T,F)
-data.wisel<-data.wi[,c(10,60:62)]
+data.wisel<-data.wi[,c(10,45:47)]
 commonalityCoefficients(data.wi,dv="LanCh", ivlist=list("scaleP","scaleS","centerV1"))
 lm.out<-lm(LanCh~1+scaleP+scaleS+centerV1,data=data.wisel)
 rg.out<-calc.yhat(lm.out)
@@ -912,14 +968,14 @@ summary(mr.all2.grammar)
 ```{r graph supp}
 # Figure S1, Section 3, Supplement
 graph2.raw<-data.wi[,-c(23:24,39:41)] #(remove Age and BPVS, and model-based Pred,Unpred and Speed to avoid duplicates)
-names(graph2.raw)[43]<-"Speed"
-names(graph2.raw)[47]<-"Rev"
-names(graph2.raw)[49]<-"Pred"
+names(graph2.raw)[38]<-"Speed"
+names(graph2.raw)[37]<-"Rev"
+names(graph2.raw)[35]<-"Pred"
 names(graph2.raw)[8]<-"BPVS"
-names(graph2.raw)[5]<-"Age"
+names(graph2.raw)[5]<-"AGE"
 names(graph2.raw)[18]<-"SES"
 names(graph2.raw)[11]<-"TROG"
-corr_test2.raw<-ggpairs(graph2.raw,columns=c("Pred","Rev","Speed","Age","BPVS","TROG","SES"), lower = list(continuous = my_fn))+theme(axis.text.x = element_text(size=5))
+corr_test2.raw<-ggpairs(graph2.raw,columns=c("Pred","Rev","Speed","AGE","BPVS","TROG","SES"), lower = list(continuous = my_fn))+theme(axis.text.x = element_text(size=5))
 ggsave("corr_test2.raw.png", plot=corr_test2.raw, width=30, height=15, unit="cm", dpi=300, path=getwd())
 ```
 
